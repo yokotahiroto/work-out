@@ -4,12 +4,55 @@
     <title>Workout</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class = "container">
+      <div class = "navbar-brand">
+        <%= link_to "work out", '/', class: 'text-white'%>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class = "collapse navbar-collapse" id = "navbarNavDolopdown">
+        <ul class = "navbar-nav ml-auto">
+           <% if user_signed_in? %>
+          <li> 
+            <%= link_to ' マイページ', user_path(current_user.id), class: 'fas fa-home nav-link text-ligh text-white' %>
+          </li>
+          <li>
+            
+          </li>
+          <li>
+            
+          </li>
+          <li>
+            <%= link_to ' logout', destroy_user_session_path, method: :delete , class: 'fas fa-sign-out-alt nav-link text-light text-white'%>
+          </li>
+          <% else %>
+          <li>
+            <%= link_to ' Home', '/', class: 'nav-link text-light text-white' %>
+          </li> 
+          <li>
+            <%= link_to " About", "/homes/about", class: 'nav-link text-light text-white' %> 
+          </li>
+          <li>
+            <%= link_to " sign up", new_user_registration_path, class: 'nav-link text-light text-white' %>
+          </li>
+          <li>
+            <%= link_to " login", new_user_session_path, class: ' nav-link text-light text-white' %>
+          </li>
+            <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>  
+    </header>
     <%= yield %>
   </body>
 </html>
