@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-auto ml-1 mt-2">
+      <h3 style="border-left: 4px solid #000;">投稿詳細</h3>
+    </div>
+  <div class="row">
+    <div class="col-7 h-100 w-100">
+      <%= attachment_image_tag @training, :post_image, fallback: "no_photo.png" %>
+    </div>
+    <div class="col-5">
+      <div class="border">
+        <div class="border-bottom: 1px solid #000;">
+          <h4><%= @training.user.name %></h4>
+        </div>
+        <h5>日付</h5>
+      </div>
+    </div>
+  </div>
+</div>

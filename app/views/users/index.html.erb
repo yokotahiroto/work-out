@@ -1,2 +1,27 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-auto ml-1 mt-2">
+      <h3 style="border-left: 4px solid #000;">おすすめユーザー</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-auto ml-1 mt-2">
+      <h3 style="border-left: 4px solid #000;"></h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <div class="d-flex align-content-start flex-wrap mt-4">
+        <% @users.each do |user| %>
+        <div class="mx-5 my-4">
+          <%=link_to user_path(user.id)do %>
+          <%= attachment_image_tag user, :profile_image, size:'180x180', fallback: "no_photo.png", size:'180x180' %><br>
+          <% end %>
+          <div class="text-center"><%= user.name %></div>
+        </div>
+       
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

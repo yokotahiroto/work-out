@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_21_030822) do
+ActiveRecord::Schema.define(version: 2021_01_22_032557) do
+
+  create_table "muscles", force: :cascade do |t|
+    t.integer "part", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trainings", force: :cascade do |t|
+    t.string "user_id"
+    t.string "post_image_id"
+    t.date "day"
+    t.time "time"
+    t.integer "meal", default: 0, null: false
+    t.integer "run", default: 0, null: false
+    t.text "memo"
+    t.integer "weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "muscle_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

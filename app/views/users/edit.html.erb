@@ -1,2 +1,35 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-auto ml-1 mt-2">
+      <h3 style="border-left: 4px solid #000;">プロフィールを編集</h3>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div><%= attachment_image_tag @user, :profile_image, size:'180x100', fallback: "no_photo.png", size:'180x180' %></div>
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+      <%= form_with model:@user, local:true do |f| %>
+
+      <div class="form-group">
+        <%= f.label :profile_image, "プロフィール写真" %>
+        <%= f.attachment_field :profile_image, class: "form-control-file" %>
+      </div>
+      
+      <div class = "form-group">
+        <%= f.label :name, "名前" %>
+        <%= f.text_field :name, class: 'form-control'%>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :introduction, "自己紹介" %>
+        <%= f.text_area :introduction, class: "form-control introduction" %>
+      </div>
+      
+      <div class = "form-group">
+        <button class = "btn btn-secondary">完了</button>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
