@@ -3,6 +3,15 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'homes#top'
   get "homes/about" => "homes/about"
-  resources :users
+  
+  resources :users do
+   member do
+     get :following, :follower
+    end
+  end
+  
+  post 'follow/:id' => 'relationships#create', as: 'follow'
+  post 'unfollow/:id' => 'relationships#destroy', as: 'unfollow'
+  
   resources :trainings
 end
