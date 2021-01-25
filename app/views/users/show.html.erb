@@ -22,8 +22,8 @@
         </thead>
         <tbody>
           <tr>
-            <td></td>
-            <td></td>
+            <td><%= link_to @user.followed.count, follower_user_path(@user) %></td>
+            <td><%= link_to @user.follower.count, following_user_path(@user) %></td>
             <td></td>
             <td></td>
             <td></td>
@@ -36,5 +36,15 @@
       </div>
       <%= @user.introduction %>
     </div>
+    
   </div>
+  <div class="row">
+      <% unless current_user == @user %>
+        <% if current_user.following?(@user) %>
+            <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: 'btn btn-info btn-sm' %>
+        <% else %>
+            <%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: 'btn btn-success btn-sm' %>
+        <% end %>
+      <% end %>
+    </div>
 </div>
