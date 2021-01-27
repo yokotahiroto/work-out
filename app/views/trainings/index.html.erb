@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col-10 mx-auto">
       <div class="d-flex align-content-start flex-wrap mt-4">
         <% @trainings.each do |training| %>
         <div class="mx-2 my-4">
@@ -14,9 +14,13 @@
           <% end %>
           <div class="my-1 mx-auto">名前：<%= training.user.name %></div>
           <%= link_to "投稿詳細", training_path(training) %>
+          <div id="favorite-btn-<%= training.id %>"> 
+            <%= render 'favorites/favorite-btn', training: training %>
+          </div>
         </div>
         <% end %>
       </div>
     </div>
   </div>
-</div>
+</div
+

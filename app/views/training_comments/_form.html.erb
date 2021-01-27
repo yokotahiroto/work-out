@@ -1,0 +1,4 @@
+<%= form_with(model: [training, training_comment], url: training_training_comments_path(@training) ) do |f| %>
+    <%= f.text_area :comment, class: "input-mysize" %>
+    <%= f.submit "送信", class: "btn btn-outline-dark comment-submit float-right" %>
+<% end %>

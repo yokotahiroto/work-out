@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-auto ml-1 mt-2">
+      <h3 style="border-left: 4px solid #000;">投稿編集</h3>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-8 mx-auto">
+      <div class="rounded mx-auto d-block">
+        <%= attachment_image_tag @training, :post_image, size:'400x300', fallback: "no_photo.png", size:'180x180' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 mx-auto border">
+      <%= form_with model:@training, local:true do |f| %>
+      
+      <h5 style="font-weight :bold;">
+       <%= f.label :post_image, "トレーニング写真", class: "fas fa-user-circle" %>
+      </h5>
+       <%= f.attachment_field :post_image, class: "form-control-file" %>
+      <hr>
+      
+      <h5 style="font-weight :bold;">
+        <%= f.label :day, "日付", class: "fas fa-calendar-week" %>
+      </h5>
+        <%= f.date_select :day, {} %>
+      <hr>
+       
+      <h5 style="font-weight :bold;">
+        <%= f.label :time, "トレーニング時間", class: "fas fa-stopwatch" %>
+      </h5>
+        <%= f.number_field :time %> 分
+      <hr>
+      
+      <h5 style="font-weight :bold;">
+        <%= f.label :muscle_ids, "トレーニング部位", class: "fas fa-dumbbell" %>
+      </h5>
+        <%= f.collection_check_boxes(:muscle_ids, Muscle.all, :id, :part) do |b| %>
+          <%= b.label { b.check_box + b.text } %>
+        <% end %>
+      <hr>
+      
+      <h5 style="font-weight :bold;">
+       <%= f.label :run, "有酸素", class: "fas fa-running" %>
+      </h5>
+       <%= f.select :run, Training.runs.keys, {prompt: "選択してください"}, class: "run-select" %>
+      <hr>
+      
+      <h5 style="font-weight :bold;">
+       <%= f.label :meal, "食事法", class: "fas fa-drumstick-bite" %>
+      </h5>
+       <%= f.select :meal, Training.meals.keys, {prompt: "選択してください"}, class: "meal-select" %>
+      <hr>
+      
+      <h5 style="font-weight :bold;">
+        <%= f.label :weight, "体重", class: "fas fa-weight"%>
+      </h5>
+        <%= f.number_field :weight %> kg
+      <hr>
+      
+      <h5 style="font-weight :bold;">
+        <%= f.label :memo, "メモ", class: "fas fa-clipboard" %>
+      </h5>
+        <%= f.text_area :memo, class: "form-control" %>
+      <hr>
+      
+      <div class = "form-group center">
+        <button class = "btn btn-secondary">編集する</button>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
