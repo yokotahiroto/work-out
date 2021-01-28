@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   resource :favorites, only: [:create, :destroy]
   resources :training_comments, only: [:create, :destroy]
   end
+  
+  resources :chats, only: [:show, :index]
 end

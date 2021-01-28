@@ -35,6 +35,9 @@
              <%= link_to ' おすすめユーザー', users_path, class: 'fas fa-home nav-link text-ligh text-white' %>
           </li>
           <li>
+             <%= link_to ' DM', chats_path(current_user.id), class: 'fas fa-home nav-link text-ligh text-white' %>
+          </li>
+          <li>
             <%= link_to ' logout', destroy_user_session_path, method: :delete , class: 'fas fa-sign-out-alt nav-link text-light text-white'%>
           </li>
           <% else %>
