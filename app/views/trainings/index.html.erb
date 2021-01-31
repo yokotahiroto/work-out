@@ -8,12 +8,12 @@
     <div class="col-10 mx-auto">
       <div class="d-flex align-content-start flex-wrap mt-4">
         <% @trainings.each do |training| %>
-        <div class="mx-2 my-4">
-          <%=link_to user_path(training.user.id)do %>
+        <div class="mx-5 my-4">
+          <%=link_to training_path(training)do %>
           <%= attachment_image_tag training, :post_image, size:'180x180', fallback: "no_photo.png", size:'180x180' %>
           <% end %>
           <div class="my-1 mx-auto">名前：<%= training.user.name %></div>
-          <%= link_to "投稿詳細", training_path(training) %>
+          <%= link_to "ユーザーページ",user_path(training.user.id), class: "btn btn-outline-dark float-right" %>
           <div id="favorite-btn-<%= training.id %>"> 
             <%= render 'favorites/favorite-btn', training: training %>
           </div>

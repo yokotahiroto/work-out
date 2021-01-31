@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_27_051117) do
+ActiveRecord::Schema.define(version: 2021_01_30_050151) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 2021_01_27_051117) do
   create_table "trainings", force: :cascade do |t|
     t.string "user_id"
     t.string "post_image_id"
-    t.date "day"
     t.integer "time"
     t.integer "meal", default: 0, null: false
     t.integer "run", default: 0, null: false
@@ -69,6 +68,7 @@ ActiveRecord::Schema.define(version: 2021_01_27_051117) do
     t.integer "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_time"
   end
 
   create_table "users", force: :cascade do |t|

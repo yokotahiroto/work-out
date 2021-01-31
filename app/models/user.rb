@@ -5,9 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attachment :profile_image
   attachment :image
+  attachment :post_image
   
   has_many :trainings, dependent: :destroy
-  has_many :favorites, dependent: :destroy 
+  has_many :favorites, dependent: :destroy
   has_many :training_comments, dependent: :destroy
   has_many :chats,dependent: :destroy
   
@@ -26,5 +27,9 @@ class User < ApplicationRecord
   
   def following?(user)
   following_user.include?(user)
+  end
+  
+  def muscle_part
+    muscles.map {|muscle| muscle.part }
   end
 end

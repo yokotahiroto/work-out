@@ -29,7 +29,8 @@ class TrainingsController < ApplicationController
     @training = Training.new(training_params)
     @training.user_id = current_user.id
     if @training.save
-      redirect_to trainings_path, notice: 'You have create book successfully'
+      flash[:notice] = "トレーニングを記録しました"
+      redirect_to trainings_path
     else
       render :'users/show'
     end
@@ -40,7 +41,8 @@ class TrainingsController < ApplicationController
     @training.update(training_params)
     @training.user_id = current_user.id
     if @training.save
-        redirect_to training_path(@training.id), notice:'You have update book successfully'
+      flash[:notice] = "トレーニングを更新しました"
+        redirect_to training_path(@training.id)
     else
         render :edit
     end
@@ -49,6 +51,7 @@ class TrainingsController < ApplicationController
   def destroy
     @training = Training.find(params[:id])
     @training.destroy
+    flash[:notice] = "トレーニングを削除しました"
     redirect_to trainings_path
   end
 
@@ -63,6 +66,7 @@ class TrainingsController < ApplicationController
       :run,
       :memo,
       :weight,
+      :start_time,
       muscle_ids: [],
       )
   end

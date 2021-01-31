@@ -36,7 +36,7 @@
       </div>
       <%= @user.introduction %>
     </div>
-    
+
   </div>
   <div class="row mt-2">
     <div class="col-10 mx-auto">
@@ -49,6 +49,36 @@
         <%= link_to "メッセージ", chat_path(@user),class: "btn btn-secondary w-4" %>
       <% end %>
     </div>
-    
+  </div>
+  <div class="row">
+    <div class="col-10 mx-auto mt-2">
+      <div class="tab-area">
+        <div class="tab active">
+          カレンダー
+        </div>
+        <div class="tab">
+          グラフ
+        </div>
+      </div>
+      <div class="content-area">
+        <div class="content show">
+          <%= month_calendar events: @current_user.trainings do |date, trainings| %>
+            <%= date.day %>
+            <% trainings.each do |training| %>
+            <%= link_to "詳細", training_path(training) %>
+           <div>
+            <% training.muscle_part.each do |part| %>
+            <%= part %>
+            <% end %>
+           </div>
+           <% end %>
+          <% end %>
+
+        </div>
+        <div class="content">
+          <%= line_chart @data %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

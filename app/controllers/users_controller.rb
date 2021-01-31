@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @training = @user.trainings
+    @current_user = current_user
+    @data = @training.pluck(:start_time, :weight)
   end
 
   def index
@@ -22,7 +25,7 @@ class UsersController < ApplicationController
        render :edit
     end
   end
-  
+
   def following
     @user  = User.find(params[:id])
     render 'show_follow'
@@ -32,9 +35,9 @@ class UsersController < ApplicationController
     @user  = User.find(params[:id])
     render 'show_follower'
   end
-  
+
   private
-  
+
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
   end
