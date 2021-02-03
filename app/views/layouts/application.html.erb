@@ -11,54 +11,100 @@
 
   <body>
     <header>
-      <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class = "container">
-      <div class = "navbar-brand">
-        <%= link_to "work out", '/', class: 'text-white'%>
-      </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class = "collapse navbar-collapse" id = "navbarNavDolopdown">
-        <ul class = "navbar-nav ml-auto">
-           <% if user_signed_in? %>
-          <li> 
-            <%= link_to ' マイページ', user_path(current_user.id), class: 'fas fa-home nav-link text-ligh text-white' %>
-          </li>
-          <li>
-            <%= link_to ' 新規投稿', new_training_path, class: 'fas fa-home nav-link text-ligh text-white' %>
-          </li>
-          <li>
-             <%= link_to ' おすすめ投稿', trainings_path, class: 'fas fa-home nav-link text-ligh text-white' %>
-          </li>
-          <li>
-             <%= link_to ' おすすめユーザー', users_path, class: 'fas fa-home nav-link text-ligh text-white' %>
-          </li>
-          <li>
-             <%= link_to ' DM', chats_path(current_user.id), class: 'fas fa-home nav-link text-ligh text-white' %>
-          </li>
-          <li>
-            <%= link_to ' logout', destroy_user_session_path, method: :delete , class: 'fas fa-sign-out-alt nav-link text-light text-white'%>
-          </li>
-          <% else %>
-          <li>
-            <%= link_to ' Home', '/', class: 'nav-link text-light text-white' %>
-          </li> 
-          <li>
-            <%= link_to " About", "/homes/about", class: 'nav-link text-light text-white' %> 
-          </li>
-          <li>
-            <%= link_to " sign up", new_user_registration_path, class: 'nav-link text-light text-white' %>
-          </li>
-          <li>
-            <%= link_to " login", new_user_session_path, class: ' nav-link text-light text-white' %>
-          </li>
-            <% end %>
-        </ul>
-      </div>
-    </div>
-  </nav>  
+  <!--    <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">-->
+  <!--  <div class = "container">-->
+  <!--    <div class = "navbar-brand">-->
+  <!--      <%#= link_to "work out", '/', class: 'text-white'%>-->
+  <!--    </div>-->
+  <!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
+  <!--      <span class="navbar-toggler-icon"></span>-->
+  <!--    </button>-->
+  <!--    <div class = "collapse navbar-collapse" id = "navbarNavDolopdown">-->
+  <!--      <ul class = "navbar-nav ml-auto">-->
+  <!--         <%# if user_signed_in? %>-->
+  <!--        <li> -->
+  <!--          <%#= link_to ' マイページ', user_path(current_user.id), class: 'fas fa-home nav-link text-ligh text-white' %>-->
+  <!--        </li>-->
+  <!--        <li>-->
+  <!--          <%#= link_to ' 新規投稿', new_training_path, class: 'fas fa-home nav-link text-ligh text-white' %>-->
+  <!--        </li>-->
+  <!--        <li>-->
+  <!--           <%#= link_to ' おすすめ投稿', trainings_path, class: 'fas fa-home nav-link text-ligh text-white' %>-->
+  <!--        </li>-->
+  <!--        <li>-->
+  <!--           <%#= link_to ' おすすめユーザー', users_path, class: 'fas fa-home nav-link text-ligh text-white' %>-->
+  <!--        </li>-->
+  <!--        <li>-->
+  <!--           <%#= link_to ' DM', chats_path(current_user.id), class: 'fas fa-home nav-link text-ligh text-white' %>-->
+  <!--        </li>-->
+  <!--        <li>-->
+  <!--          <%#= link_to ' logout', destroy_user_session_path, method: :delete , class: 'fas fa-sign-out-alt nav-link text-light text-white'%>-->
+  <!--        </li>-->
+  <!--        <%# else %>-->
+  <!--        <li>-->
+  <!--          <%#= link_to ' Home', '/', class: 'nav-link text-light text-white' %>-->
+  <!--        </li> -->
+  <!--        <li>-->
+  <!--          <%#= link_to " About", "/homes/about", class: 'nav-link text-light text-white' %> -->
+  <!--        </li>-->
+  <!--        <li>-->
+  <!--          <%#= link_to " sign up", new_user_registration_path, class: 'nav-link text-light text-white' %>-->
+  <!--        </li>-->
+  <!--        <li>-->
+  <!--          <%#= link_to " login", new_user_session_path, class: ' nav-link text-light text-white' %>-->
+  <!--        </li>-->
+  <!--          <%# end %>-->
+  <!--      </ul>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</nav>  -->
+  
+  <input type="checkbox" id="navTgl">
+	<label for="navTgl" class="open"><span></span></label>
+	<label for="navTgl" class="close"></label>
+	<nav class="menu">
+	  <h2>メニュー</h2>
+	  <ul>
+	    <% if user_signed_in? %>
+	    <li>
+	      <%= link_to ' マイページ', user_path(current_user.id), class: 'fas fa-home nav-link text-ligh text-white' %>
+	    </li>
+	    <li>
+	      <%= link_to ' 新規投稿', new_training_path, class: 'fas fa-home nav-link text-ligh text-white' %>
+	    </li>
+	    <li>
+	      <%= link_to ' おすすめ投稿', trainings_path, class: 'fas fa-home nav-link text-ligh text-white' %>
+	    </li>
+	    <li>
+	      <%= link_to ' おすすめユーザー', users_path, class: 'fas fa-home nav-link text-ligh text-white' %>
+	    </li>
+	    <li>
+	       <%= link_to ' DM', chats_path(current_user.id), class: 'fas fa-home nav-link text-ligh text-white' %>
+	    </li>
+	    <li>
+	      <%= link_to ' logout', destroy_user_session_path, method: :delete , class: 'fas fa-sign-out-alt nav-link text-light text-white'%>
+	    </li>
+	    <% else %>
+	    <li>
+	      <%= link_to ' Home', '/', class: 'nav-link text-light text-white' %>
+	    </li>
+	    <li>
+	      <%= link_to " 筋トレのメリットって？", "/homes/about", class: 'nav-link text-light text-white' %>
+	    </li>
+	    <li>
+	      <%= link_to " 新規登録", new_user_registration_path, class: 'nav-link text-light text-white' %>
+	    </li>
+	    <li>
+	      <%= link_to " ログイン", new_user_session_path, class: ' nav-link text-light text-white' %>
+	    </li>
+	    <% end %>
+	  </ul>
+	</nav>
     </header>
+    <main>
     <%= yield %>
+    </main>
+    <footer>
+    </footer>
   </body>
 </html>
