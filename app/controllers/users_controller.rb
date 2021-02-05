@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @training = @user.trainings
     @current_user = current_user
     @data = @training.pluck(:start_time, :weight)
+    @time_total = @training.all.sum(:time)
   end
 
   def index
@@ -39,6 +40,11 @@ class UsersController < ApplicationController
   def follower
     @user  = User.find(params[:id])
     render 'show_follower'
+  end
+  
+  def user_favorite
+    @user_favorite = User.find_by(id: params[:id])
+    @favorites = Favorite.where(user_id: @user_favorite.id)
   end
 
   private

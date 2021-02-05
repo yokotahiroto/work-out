@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-auto ml-1 mt-2">
-      <h3 style="border-left: 4px solid #000;">フォロー一覧</h3>
+      <h3 style="border-left: 4px solid #000;">フォロワー一覧</h3>
     </div>
   </div>
   <div class="row">
@@ -9,14 +9,14 @@
       <thead>
         <tr>
           <th></th>
-          <th>名前</th>
+          <th>ユーザーネーム</th>
           <th>フォロワー数</th>
           <th>フォロー数</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-         <% @user.following_user.where.not(id: current_user.id).each do |user| %>
+        <% @user.follower_user.where.not(id: current_user.id).each do |user| %>
         <tr>
           <td>
             <%= attachment_image_tag user, :profile_image, size:'40x40', fallback: "no_photo.png", size:'40x40' %>
@@ -34,7 +34,7 @@
             <%= link_to "詳細", user_path(user), class: "btn btn-outline-dark float-right" %>
           </td>
         </tr>
-         <% end %>
+        <% end %>
       </tbody>
     </table>
   </div>

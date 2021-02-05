@@ -5,6 +5,8 @@ class Training < ApplicationRecord
   has_many :favorites, dependent: :destroy 
   has_many :training_comments, dependent: :destroy
   attachment :post_image
+  validates :time, presence: true
+  validates :weight, presence: true
   
   def muscle_part
     muscles.map {|muscle| muscle.part }

@@ -4,8 +4,8 @@
       <h3 style="border-left: 4px solid #000;">おすすめユーザー</h3>
     </div>
   </div>
-  <div class="row">
-    <div class="search">
+  <div class="row mx-auto">
+    <div class="search mx-auto">
       <%= form_with model: User.new, method: :get, class: "search__form" do |f| %>
         <%= f.text_field :keyword, required: true, class: "search__form__input" %>
         <%= f.submit "検索" %>

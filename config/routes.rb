@@ -9,7 +9,7 @@ Rails.application.routes.draw do
      get :following, :follower
     end
   end
-  
+  get "users/user_favorites" => "users/user_favorites"
   post 'follow/:id' => 'relationships#create', as: 'follow'
   post 'unfollow/:id' => 'relationships#destroy', as: 'unfollow'
   

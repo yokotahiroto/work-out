@@ -1,6 +1,9 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@charset "UTF-8";
+
 .img-wrap {
   overflow: hidden;
   position: relative;
@@ -31,6 +34,12 @@
   bottom: 0;
 }
 
+.img p {
+  position: absolute;/*絶対配置*/
+  top: 80%;
+  left: 50%;
+  }
+
 @keyframes img-wrap-before {
   100% {
     transform: translateX(100%);
@@ -43,7 +52,7 @@
   }
 }
 
-//-------------top画面----------------------
+//-------------animaition----------------------
 .top {
   font-family: serif;
   background-color: #333;
@@ -66,17 +75,22 @@ theader {
 }
 
 theader h1 {
-  font-size: 70px;
+  font-family: 'Bangers', cursive;
+  font-size: 100px;
   font-weight: bold;
   margin-bottom: 60px;
   white-space: nowrap; //改行させない
-  animation: tittleAnimation 1.5s;
+  opacity: 0;
 }
 
 tmain {
   max-width: 1000px;
   width: 100%;
   margin: 50px auto;
+}
+
+ul {
+  list-style: none;
 }
 
 .contents li {
@@ -91,12 +105,22 @@ tmain {
 //   transform: none;
 // }
 
+main theader h1.show {
+  animation: tittleAnimation 2.5s;
+  opacity: 1;
+  text-align: right;
+}
+
 .contents li.show h2,
 .contents li.show p,
 main .contents li.show img {
   transform: none;
   opacity: 1;
-  
+}
+
+main tfooter button.show {
+  opacity: 1;
+  transform: none;
 }
 
 .contents li:not(:first-of-type) {
@@ -164,4 +188,19 @@ align-items: flex-start;
 }
 //top画面
 
+.arrow {
+  width: 30px;
+  height: 30px;
+  border: 5px solid;
+  border-color:  transparent transparent #fff #fff;
+  transform: rotate(-45deg);
+}
 
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+#back img {
+  width: 50px;
+}

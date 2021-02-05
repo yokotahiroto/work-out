@@ -1,34 +1,53 @@
-<h2>Sign up</h2>
 
-<%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+
+<div class="login-container">
+  <div class="row mx-auto">
+    <h1 class="mx-auto text-light">workout</h1>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="row mt-4 mx-auto">
+    <div class="col-6 mx-auto">
+      <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        
+      <div class="devise-form row">
+        <%= f.label :メールアドレス, class: "col-sm-3 col-form-label text-light"%>
+        <div class="col-sm-9">
+        <%= f.email_field :email, placeholder: "sample@example.com", class: "form-control devise-field", autofocus: true, autocomplete: "Email" %>
+        </div>
+      </div>
+        
+      <div class="devise-form row">
+        <%= f.label :ユーザーネーム, class: "col-sm-3 col-form-label text-light" %>
+        <div class="col-sm-9">
+        <%= f.text_field :name, placeholder: "ユーザーネーム", class: "form-control devise-field", autofocus: true %>
+        </div>
+      </div>
+      
+      <div class="devise-form row">
+        <%= f.label :パスワード, class: "col-sm-3 col-form-label text-light" %>
+        <div class="col-sm-9">
+        <%= f.password_field :password, class: "form-control devise-field", autocomplete: "Password" %>
+        </div>
+      </div>
+      
+      <div class="devise-form row">
+        <%= f.label :確認用, class:"col-sm-3 col-form-label text-light" %>
+        <div class="col-sm-9">
+        <%= f.password_field :password_confirmation, class: "form-control devise-field", autocomplete: "new-password" %>
+        </div>
+      </div>
+      
+      <div class="devise-form row mt-2">
+        <div class="offset-sm-4">
+          <%= f.submit "新規登録", class: "btn btn-outline-light" %>
+        </div>
+      </div>
+    </div>
+      <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="row mx-auto">
+    <%= link_to "新規登録済の方はこちら", new_user_session_path, class: "btn btn-outline-light mx-auto mt-4" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+    <%= render "devise/shared/links" %>
+</div>

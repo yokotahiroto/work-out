@@ -10,8 +10,15 @@
               <div class="text-center"><%= user.name %></div>
             </div>
           <% end %>
+        <% elsif users.blank? %>
+            <div class="mx-5 my-4">
+              <%=link_to user_path(user.id) do %>
+              <%= attachment_image_tag user, :profile_image, fallback: "no_photo.png", size:'180x180' %><br>
+              <% end %>
+              <div class="text-center"><%= user.name %></div>
+            </div>
         <% else %>
-          <p>検索に合致するものはありません</p>
+          <p class="mx-auto">検索に合致するものはありません</p>
         <% end %>
       </div>
     </div>

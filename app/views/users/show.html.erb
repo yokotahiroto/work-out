@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-auto ml-1 mt-2">
+    <div class="offset-1 col-auto mt-2 mb-2">
       <h3 style="border-left: 4px solid #000;">マイページ</h3>
     </div>
   </div>
@@ -22,11 +22,11 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= link_to @user.followed.count, follower_user_path(@user) %></td>
-            <td><%= link_to @user.follower.count, following_user_path(@user) %></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td class="text-center"><%= link_to @user.followed.count, follower_user_path(@user) %></td>
+            <td class="text-center"><%= link_to @user.follower.count, following_user_path(@user) %></td>
+            <td class="text-center"><%= link_to @user.favorites.count, "/users/user_favorites" %></td>
+            <td class="text-center"><%= @training.count %></td>
+            <td class="text-center"><%= @time_total %></td>
           </tr>
         </tbody>
       </table>
@@ -78,6 +78,19 @@
         <div class="content">
           <%= line_chart @data %>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <div class="d-flex align-content-start flex-wrap mt-4">
+        <% @training.each do |training| %>
+        <div class="mx-5 my-4">
+          <%=link_to training_path(training)do %>
+          <%= attachment_image_tag training, :post_image, size:'180x180', fallback: "no_photo.png", size:'180x180' %>
+          <% end %>
+        </div>
+        <% end %>
       </div>
     </div>
   </div>

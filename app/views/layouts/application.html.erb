@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Bangers rel="stylesheet"">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -59,6 +60,10 @@
   <!--  </div>-->
   <!--</nav>  -->
   
+     <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class = "container">
+      <div class = "navbar-brand mx-auto">
+  <p class="title pt-1">workout</p>
   <input type="checkbox" id="navTgl">
 	<label for="navTgl" class="open"><span></span></label>
 	<label for="navTgl" class="close"></label>
@@ -98,13 +103,16 @@
 	      <%= link_to " ログイン", new_user_session_path, class: ' nav-link text-light text-white' %>
 	    </li>
 	    <% end %>
-	  </ul>
-	</nav>
-    </header>
-    <main>
+	   </ul>
+	  </nav>
+	  </div>
+	  </div>
+	  </nav>
+   </header>
+  <main>
     <%= yield %>
-    </main>
-    <footer>
-    </footer>
+  </main>
+  <footer>
+  </footer>
   </body>
 </html>

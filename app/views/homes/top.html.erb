@@ -1,16 +1,18 @@
 <div class="container-fluid">
   <div class="row">
     <div class="img-wrap">
-      <%= image_tag "trainingtop2.jpeg",size: "1600x700" %>
+      <div class="img">
+      <%= image_tag "trainingtop2.jpeg",size: "1600x800" %>
+      <p class="arrow"></p>
+      </div>
     </div>
   </div>
   <div class="row top">
     <theader>
       <h1 class="animationTarget">Lets workout</h1>
-    </theader>
+    </theader> 
     <tmain>
     <ul class="contents">
-      
       <li class="animationTarget">
         <%= image_tag "run.jpeg" %>
         <div class="contentstext">
@@ -21,7 +23,7 @@
           </p>
         </div>
       </li>
-      
+
       <li class="animationTarget">
         <%= image_tag "trainings.jpeg" %>
         <div class="contentstext">
@@ -33,7 +35,7 @@
           </p>
         </div>
       </li>
-      
+
       <li class="animationTarget">
         <%= image_tag "chart.jpeg" %>
         <div class="contentstext">
@@ -43,7 +45,7 @@
           </p>
         </div>
       </li>
-      
+
       <li class="animationTarget">
         <%= image_tag "calendar.jpeg" %>
         <div class="contentstext">
@@ -56,5 +58,18 @@
       </li>
     </ul>
     </tmain>
+  </div>
+  <div class="row top">
+    <tfooter class="mx-auto">
+      <%= link_to "新規登録はこちら", new_user_registration_path, class: "btn btn-light text-dark-50" %>
+      <%= link_to "筋トレのメリットが知りたい", "/homes/about", class: "btn btn-light text-dark" %>
+    </tfooter>
+    <span id="back">
+      <a href="#">
+        <img src="assets/arrow.png" alt="">
+      </a>
+    </span>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
   </div>
 </div>

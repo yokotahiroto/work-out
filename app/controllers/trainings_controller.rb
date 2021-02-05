@@ -60,7 +60,6 @@ class TrainingsController < ApplicationController
   def training_params
     params.require(:training).permit(
       :post_image,
-      :day,
       :time,
       :meal,
       :run,

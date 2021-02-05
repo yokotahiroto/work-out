@@ -22,9 +22,9 @@
       <hr>
       
       <h5 style="font-weight :bold;">
-        <%= f.label :day, "日付", class: "fas fa-calendar-week" %>
+        <%= f.label :start_time, "日付", class: "fas fa-calendar-week" %>
       </h5>
-        <%= f.date_select :day, {} %>
+        <%= f.date_select :start_time, {} %>
       <hr>
        
       <h5 style="font-weight :bold;">
@@ -65,8 +65,8 @@
         <%= f.text_area :memo, class: "form-control" %>
       <hr>
       
-      <div class = "form-group center">
-        <button class = "btn btn-secondary">編集する</button>
+      <div class = "form-btn">
+        <%= f.submit "編集完了", class: "btn btn-outline-dark float-right　align-center" %>
       </div>
       <% end %>
     </div>
