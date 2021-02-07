@@ -32,4 +32,8 @@ class User < ApplicationRecord
   def muscle_part
     muscles.map {|muscle| muscle.part }
   end
+  
+  # def feed
+  #   Training.from_users_followed_by(self)
+  # end
 end

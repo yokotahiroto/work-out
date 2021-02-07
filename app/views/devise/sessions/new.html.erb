@@ -1,23 +1,22 @@
 <div class="login-container">
   <div class="row mx-auto">
-    <h1 class="mx-auto text-light">workout</h1>
+    <h1 class="mx-auto text-light title">Lets workout</h1>
   </div>
-
-  <div class="row mt-4 mx-auto">
+  <div class="row pt-4 mx-auto">
     <div class="col-6 mx-auto">
-       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
         
       <div class="devise-form row">
         <%= f.label :ユーザーネーム, class: "col-sm-3 col-form-label text-light" %>
         <div class="col-sm-9">
-        <%= f.text_field :name, placeholder: "ユーザーネーム", class: "form-control devise-field", autofocus: true %>
+          <%= f.text_field :name, placeholder: "ユーザーネーム", class: "form-control devise-field", autofocus: true %>
         </div>
       </div>
       
       <div class="devise-form row">
         <%= f.label :パスワード, class: "col-sm-3 col-form-label text-light" %>
         <div class="col-sm-9">
-        <%= f.password_field :password, class: "form-control devise-field", autocomplete: "Password" %>
+          <%= f.password_field :password, class: "form-control devise-field", autocomplete: "Password" %>
         </div>
       </div>
       
@@ -28,16 +27,15 @@
     　　</div>
   　　<% end %>
       
-      <div class="devise-form row mt-2">
+      <div class="devise-form row mt-2 mx-auto">
         <div class="offset-sm-4">
           <%= f.submit "ログイン", class: "btn btn-outline-light" %>
         </div>
       </div>
-    </div>
       <% end %>
+    </div>
   </div>
-  <div class="row">
-    <%= link_to "新規登録がまだの方はこちら", new_user_registration_path, class: "btn btn-outline-light mx-auto mt-4" %>
-  </div>
-    <%= render "devise/shared/links" %>
+  <div class="row offset-4 col-5">
+        <%= render "devise/shared/links", class: "flex-end" %>
+      </div>
 </div>

@@ -25,8 +25,8 @@ App.chat = App.cable.subscriptions.create("ChatChannel", {
     return this.perform('speak',{sentence: sentence, current_user_id: current_user_id, partner_id: partner_id});
   }
 });
-$(function(){
-  $("#send").on("click",function(e){
+document.addEventListener('turbolinks:load',function(){
+  $("#chat-send").on("click",function(e){
     sentence=$("#sentence").val();
     App.chat.speak(sentence);
     $("#sentence").val(""); //フォームを空に

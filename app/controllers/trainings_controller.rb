@@ -7,6 +7,10 @@ class TrainingsController < ApplicationController
   def index
     @trainings = Training.all
   end
+  
+  def timeline
+    @feeds = Training.where(user_id: [current_user.id, *current_user.following_user.ids]).order(start_time: :desc)
+  end
 
   def show
     @training = Training.find(params[:id])
@@ -15,7 +19,7 @@ class TrainingsController < ApplicationController
     #新着順で表示
     @training_comments = @training.training_comments.order(created_at: :desc)
   end
-  
+   
   def edit
     @training = Training.find(params[:id])
     if @training.user == current_user
@@ -32,7 +36,7 @@ class TrainingsController < ApplicationController
       flash[:notice] = "トレーニングを記録しました"
       redirect_to trainings_path
     else
-      render :'users/show'
+      redirect_back(fallback_location: new_training_path)
     end
   end
   

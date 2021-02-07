@@ -1,11 +1,28 @@
-<table class="rooms">
-  <tbody>
-    <tr>
-      <td>
-        <%@chat_partners.each do |chat_partner|%>
-          <%=link_to "#{chat_partner.name}さんとのトークルーム", chat_path(chat_partner.id) %>
+<div class="container-fluid">
+  <div class="row col-10 mx-auto">
+    <table class="rooms col-10 mx-auto">
+      <thead>
+        <tr>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <%@chat_partners.each do |chat_partner|%>
+          <td>
+            <%=link_to chat_path(chat_partner.id) do %>
+            <%= attachment_image_tag chat_partner, :profile_image, fallback: "no_photo.png", size:'100x100' %>
+            <% end %>
+          </td>
+          <td>
+            <%= chat_partner.name %>
+          </td>
+          <td>
+            <%= @last_messege %>
+          </td>
+        </tr>
         <%end%>
-      </td>
-    </tr>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+</div>

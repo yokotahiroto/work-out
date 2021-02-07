@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-auto ml-1 mt-2">
+      <h3 style="border-left: 4px solid #000;">タイムライン</h3>
+    </div>
+  </div>
+  <% @feeds.each do |feed| %>
+    <div class="row col-10 mx-auto mt-3" sty>
+      <%= link_to user_path(feed.user) do %>
+      <%= attachment_image_tag feed.user, :profile_image, fallback: "no_photo.png", size:'100x100' %>
+      <%= feed.user.name %>
+      <% end %>
+      <hr>
+    </div>
+    <div class="row col-10 mx-auto align-center">
+      <div class="mx-auto">
+        <%= link_to training_path(feed) do %>
+        <%= attachment_image_tag feed, :post_image, fallback: "no_photo.png", size:'250x250' %>
+        <% end %>
+      </div>
+      <table class="table table-borderless">
+        <tr>
+        <th>投稿日</th><td><%= feed.created_at.strftime("%Y-%m-%d") %></td>
+        <th class="in">トレーニングをした日</th><td><%= feed.start_time.strftime("%Y-%m-%d") %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-6 mx-auto align-center">
+        <div id="favorite-btn-<%= feed.id %>" class="in">
+          <%= render 'favorites/favorite-btn', training: feed %>
+        </div>
+      </div>
+      <div class="col-6 mx-auto in">
+        <div class="far fa-comment">
+          <%= feed.training_comments.count %>
+        </div>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+  <span id="back">
+      <a href="#">
+        <img src="assets/arrow.png" alt="">
+      </a>
+    </span>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+</div>

@@ -4,6 +4,7 @@
     <title>Workout</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta charset="UTF-8 /">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Bangers rel="stylesheet"">
@@ -72,19 +73,22 @@
 	  <ul>
 	    <% if user_signed_in? %>
 	    <li>
-	      <%= link_to ' マイページ', user_path(current_user.id), class: 'fas fa-home nav-link text-ligh text-white' %>
+	      <%= link_to ' マイページ', user_path(current_user.id), class: 'fas fa-user-circle nav-link text-ligh text-white' %>
 	    </li>
 	    <li>
-	      <%= link_to ' 新規投稿', new_training_path, class: 'fas fa-home nav-link text-ligh text-white' %>
+	      <%= link_to ' 新規投稿', new_training_path, class: 'fas fa-plus nav-link text-ligh text-white' %>
 	    </li>
 	    <li>
-	      <%= link_to ' おすすめ投稿', trainings_path, class: 'fas fa-home nav-link text-ligh text-white' %>
+	      <%= link_to ' おすすめ投稿', trainings_path, class: 'fas fa-crown nav-link text-ligh text-white' %>
 	    </li>
 	    <li>
-	      <%= link_to ' おすすめユーザー', users_path, class: 'fas fa-home nav-link text-ligh text-white' %>
+	      <%= link_to ' おすすめユーザー', users_path, class: 'fas fa-search-plus nav-link text-ligh text-white' %>
 	    </li>
 	    <li>
-	       <%= link_to ' DM', chats_path(current_user.id), class: 'fas fa-home nav-link text-ligh text-white' %>
+	      <%= link_to ' タイムライン', timeline_training_path(current_user.id), class: 'fas fa-home nav-link text-ligh text-white' %>
+	    </li>
+	    <li>
+	       <%= link_to ' DM', chats_path(current_user.id), class: 'fas fa-envelope nav-link text-ligh text-white' %>
 	    </li>
 	    <li>
 	      <%= link_to ' logout', destroy_user_session_path, method: :delete , class: 'fas fa-sign-out-alt nav-link text-light text-white'%>

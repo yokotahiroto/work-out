@@ -1,7 +1,11 @@
 <div class="container-fluid">
   <div class="row">
     <div class="offset-1 col-auto mt-2 mb-2">
+      <% if @user.id == current_user.id %>
       <h3 style="border-left: 4px solid #000;">マイページ</h3>
+      <% else %>
+      <h3 style="border-left: 4px solid #000;">ユーザーページ</h3>
+      <% end %>
     </div>
   </div>
    <!--ユーザー情報-->
@@ -24,7 +28,7 @@
           <tr>
             <td class="text-center"><%= link_to @user.followed.count, follower_user_path(@user) %></td>
             <td class="text-center"><%= link_to @user.follower.count, following_user_path(@user) %></td>
-            <td class="text-center"><%= link_to @user.favorites.count, "/users/user_favorites" %></td>
+            <td class="text-center"><%= link_to @user.favorites.count, user_favorites_user_path(@user) %></td>
             <td class="text-center"><%= @training.count %></td>
             <td class="text-center"><%= @time_total %></td>
           </tr>
@@ -62,7 +66,7 @@
       </div>
       <div class="content-area">
         <div class="content show">
-          <%= month_calendar events: @current_user.trainings do |date, trainings| %>
+          <%= month_calendar events: @user.trainings do |date, trainings| %>
             <%= date.day %>
             <% trainings.each do |training| %>
             <%= link_to "詳細", training_path(training) %>

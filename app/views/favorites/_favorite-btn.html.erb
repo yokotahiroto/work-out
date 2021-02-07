@@ -1,13 +1,9 @@
 <% if training.favorited_by?(current_user)%>
-  
     <%#= link_to training_favorites_path(training), method: :delete, remote: true do %>
     <!--♥<%#= training.favorites.count %>-->
     <%= link_to training.favorites.count, training_favorites_path(training), method: :delete, remote: true, class: "fas fa-heart" %>
     <%# end %>
-  
     <% else %> 
-  
-     
      <%= link_to training.favorites.count, training_favorites_path(training), method: :post, remote: true, class: "far fa-heart" %>
   </p>
 <% end %>

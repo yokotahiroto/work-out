@@ -20,6 +20,7 @@
 //= require turbolinks
 //= require_tree .
 
+//アニメーション
 const targetElement = document.getElementsByClassName("animationTarget");
 document.addEventListener("scroll", function() {
   for (let i = 0; i < targetElement.length; i++) { //targetElementの数だけ回す
@@ -28,10 +29,11 @@ document.addEventListener("scroll", function() {
     if (window.innerHeight > getElementDistance) {
       targetElement[i].classList.add("show");
     }
-
   }
 });
+//アニメーション
 
+//トップへ戻る
 $(function() {
   $('#back a').on('click',function(event){
     $('body, html').animate({
@@ -40,10 +42,9 @@ $(function() {
     event.preventDefault();
   });
 });
-
-
+//トップへ戻る
+//タブメニュー
 document.addEventListener('turbolinks:load',function(){
-
   $(function() {
   let tabs = $(".tab"); // tabのクラスを全て取得し、変数tabsに配列で定義
   $(".tab").on("click", function() { // tabをクリックしたらイベント発火
@@ -53,19 +54,15 @@ document.addEventListener('turbolinks:load',function(){
     $(".content").removeClass("show").eq(index).addClass("show"); // showクラスを消して、contentクラスのindex番目にshowクラスを追加
   });
 });
+// タブメニュー
 
+// 検索フォーム
   $('.search__form__input').on('keyup', function(e){
-    if ($(this).val().length){
       Rails.fire($(".search__form")[0], "submit");
-    }
-    else{
-      console.log('空です.');
-      // $(".result").empty();
-    }
   });
 });
+// 検索フォーム
 
 // document.getElementById("motto").addEventListener("click", function() {
 //   this.textContent = "閉じる";
 // });
-

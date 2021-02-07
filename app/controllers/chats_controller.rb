@@ -2,6 +2,7 @@ class ChatsController < ApplicationController
   def index
     @my_chats = current_user.chats
     @chat_partners = User.where.not(id:current_user.id)#自分以外
+    # @last_messege = Chat.find_by(sentence: (updated_at: :desc).limit(1))
   end
 
   def show
