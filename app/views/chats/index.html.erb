@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row col-10 mx-auto">
-    <table class="rooms col-10 mx-auto">
+    <table class="table table-striped col-10 mx-auto">
       <thead>
         <tr>
           <th></th>
@@ -8,20 +8,28 @@
       </thead>
       <tbody>
         <tr>
-          <%@chat_partners.each do |chat_partner|%>
-          <td>
-            <%=link_to chat_path(chat_partner.id) do %>
-            <%= attachment_image_tag chat_partner, :profile_image, fallback: "no_photo.png", size:'100x100' %>
-            <% end %>
-          </td>
-          <td>
-            <%= chat_partner.name %>
-          </td>
-          <td>
-            <%= @last_messege %>
-          </td>
-        </tr>
-        <%end%>
+          <% @chat_partners.each do |chat_partner|%>
+            <td>
+              <%=link_to chat_path(chat_partner[0].id) do %>
+                <%= attachment_image_tag chat_partner[0], :profile_image, fallback: "no_photo.png", size:'100x100' %>
+              <% end %>
+            </td>
+            <td>
+              <%= chat_partner[0].name %>
+            </td>
+            <td>
+              <%# @last_message.esch do |last_message|%>
+              <%#= last_message.sentence %>
+              <%# end %>
+              <%#= @last_message.last.sentence %>
+              <%#= chat_partner.inspect %>
+              <%#= chat_partner.inspect %>
+              <%= chat_partner[1].last.sentence %>
+              <%#= current_user.chats.where(partner_id: chat_partner.id).last.sentence %>
+            </td>
+          </tr>
+
+        <% end %>
       </tbody>
     </table>
   </div>

@@ -33,3 +33,4 @@ document.addEventListener('turbolinks:load',function(){
     e.preventDefault();
   });
 });
+
