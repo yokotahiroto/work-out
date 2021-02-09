@@ -53,3 +53,33 @@
    background: #98fb98;
  }
 }
+
+
+
+.searchTerm {
+  width: 250px;
+  border: 3px solid #8EB8FF;
+  padding: 5px;
+  height: 36px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #8EB8FF;
+}
+
+.searchTerm:focus{
+  color: #8EB8FF;
+}
+
+.searchButton {
+  
+  height: 36px;
+  border: 1px solid #8EB8FF;
+  background: #8EB8FF;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/

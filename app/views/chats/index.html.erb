@@ -1,11 +1,11 @@
 <div class="container-fluid">
+  <div class="row">
+    <div class="col-auto ml-1 mt-2">
+      <h3 class="title-solid">ユーザー検索</h3>
+    </div>
+  </div>
   <div class="row col-10 mx-auto">
-    <table class="table table-striped col-10 mx-auto">
-      <thead>
-        <tr>
-          <th></th>
-        </tr>
-      </thead>
+    <table class="table table col-10 mx-auto" style="color: white;">
       <tbody>
         <tr>
           <% @chat_partners.each do |chat_partner|%>
@@ -18,14 +18,7 @@
               <%= chat_partner[0].name %>
             </td>
             <td>
-              <%# @last_message.esch do |last_message|%>
-              <%#= last_message.sentence %>
-              <%# end %>
-              <%#= @last_message.last.sentence %>
-              <%#= chat_partner.inspect %>
-              <%#= chat_partner.inspect %>
               <%= chat_partner[1].last.sentence %>
-              <%#= current_user.chats.where(partner_id: chat_partner.id).last.sentence %>
             </td>
           </tr>
 

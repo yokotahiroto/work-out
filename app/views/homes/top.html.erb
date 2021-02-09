@@ -60,16 +60,13 @@
     </tmain>
   </div>
   <div class="row top">
-    <tfooter class="mx-auto">
+    <tfooter class="mx-auto m-bottom">
       <%= link_to "新規登録はこちら", new_user_registration_path, class: "btn btn-light text-dark-50" %>
       <%= link_to "筋トレのメリットが知りたい", "/homes/about", class: "btn btn-light text-dark" %>
     </tfooter>
-    <span id="back">
+   <span id="top-btn">
       <a href="#">
-        <img src="assets/arrow.png" alt="">
+        <%= image_tag asset_path('arrow.png'), size: "80x80", class: 'top-btn' %>
       </a>
-    </span>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/script.js"></script>
-  </div>
+   </span>
 </div>

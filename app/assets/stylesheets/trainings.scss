@@ -13,3 +13,30 @@ hr {
    justify-content: center;
    align-items: center;
 }
+
+.flex {
+  display: flex;
+  justify-content: center;
+}
+
+div.field_with_errors {
+background-color: #fcc;
+padding: 2px;
+}
+
+.card-header {
+  color: black;
+}
+
+.card-body {
+  color: black;
+}
+
+.black {
+  color: black;
+}
+
+.all-form {
+  background: #FFF;
+  color: black;
+}

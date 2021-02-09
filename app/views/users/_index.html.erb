@@ -1,9 +1,9 @@
 <div class="row result">
-    <div class="col-10 mx-auto">
+    <div class="col-11 mx-auto">
       <div class="d-flex align-content-start flex-wrap mt-4">
         <% if users.present? %>
           <% users.each do |user| %>
-            <div class="mx-5 my-4">
+            <div class="mx-5 my-4 out-line">
               <%=link_to user_path(user.id) do %>
               <%= attachment_image_tag user, :profile_image, fallback: "no_photo.png", size:'180x180' %><br>
               <% end %>

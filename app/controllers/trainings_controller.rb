@@ -5,11 +5,12 @@ class TrainingsController < ApplicationController
   end
 
   def index
-    @trainings = Training.all
+    @all_ranks = Training.find(Favorite.group(:training_id).order('count(training_id) desc').limit(5).pluck(:training_id))
+    @trainings = Training.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
   end
   
   def timeline
-    @feeds = Training.where(user_id: [current_user.id, *current_user.following_user.ids]).order(start_time: :desc)
+    @feeds = Training.where(user_id: [current_user.id, *current_user.following_user.ids]).order(created_at: :desc)
   end
 
   def show
@@ -33,10 +34,10 @@ class TrainingsController < ApplicationController
     @training = Training.new(training_params)
     @training.user_id = current_user.id
     if @training.save
-      flash[:notice] = "トレーニングを記録しました"
-      redirect_to trainings_path
+      redirect_to timeline_training_path(current_user.id),notice: "トレーニングを投稿しました"
     else
-      redirect_back(fallback_location: new_training_path)
+      # redirect_back(fallback_location: new_training_path)
+      render :new
     end
   end
   
@@ -45,8 +46,7 @@ class TrainingsController < ApplicationController
     @training.update(training_params)
     @training.user_id = current_user.id
     if @training.save
-      flash[:notice] = "トレーニングを更新しました"
-        redirect_to training_path(@training.id)
+        redirect_to training_path(@training.id),notice: "トレーニングを更新しました"
     else
         render :edit
     end

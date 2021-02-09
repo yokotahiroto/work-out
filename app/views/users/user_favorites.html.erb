@@ -1,42 +1,49 @@
 <div class="container">
   <div class="row">
-    <div class="offset-1 col-auto mt-2 mb-2">
+    <div class="col-auto mt-2 mb-3">
       <h3 style="border-left: 4px solid #000;">いいねした投稿</h3>
     </div>
   </div>
   <div class="row">
-    <table class="table">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th></th>
-          <th>投稿ユーザー</th>
-          <th>メニュー</th>
-          <th>いいね数</th>
-          <th>コメント数</th>
-          <th>詳細</th>
+          <th class="text-center">投稿ユーザー</th>
+          <th class="text-center">メニュー</th>
+          <th class="text-center">いいね数</th>
+          <th class="text-center">コメント数</th>
+          <th class="text-right">詳細</th>
         </tr>
       </thead>
       <tbody>
+        <% current_user.favorite_trainings.each do |training| %>
         <tr>
-          <% @favorites.each do |favorite| %>
           <td>
-            <%= favorite.user.name %>
+            <%= attachment_image_tag training, :post_image, fallback: "no_photo.png", size:'40x40' %>
           </td>
-          <td>
-            <%= favorite.training.muscle_ids %>
+          <td class="text-center">
+            <%= training.user.name %>
           </td>
-          <td>
-            <%= favorite.favorite.count %>
+          <td class="text-center">
+            <% training.muscle_part.each do |part| %>
+            <%= part %>
+            <% end %>
           </td>
-          <td>
-            <%= favorite.training.comment.count %>
+          <td class="text-center">
+            <%= training.favorites.count %>
           </td>
-          <td>
-            <%= link_to "詳細", training_path(favorite) %>
+          <td class="text-center">
+            <%= training.training_comments.count %>
           </td>
-          <% end %>
+          <td class="align-center">
+            <%= link_to "詳細", training_path(training), class: "btn btn-outline-dark float-right align-center" %>
+          </td>
         </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
 </div>
+
+

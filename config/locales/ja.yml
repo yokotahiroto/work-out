@@ -58,3 +58,14 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
 
+  activerecord:
+    attributes:
+      user:
+        name: ユーザーネーム
+  
+  activerecord:
+    attributes:
+      training:
+        weight: 体重
+        start_time: トレーニング日
+        time: トレーニング時間

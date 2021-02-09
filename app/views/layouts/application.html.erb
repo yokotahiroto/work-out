@@ -13,110 +13,67 @@
 
   <body>
     <header>
-  <!--    <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">-->
-  <!--  <div class = "container">-->
-  <!--    <div class = "navbar-brand">-->
-  <!--      <%#= link_to "work out", '/', class: 'text-white'%>-->
-  <!--    </div>-->
-  <!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
-  <!--      <span class="navbar-toggler-icon"></span>-->
-  <!--    </button>-->
-  <!--    <div class = "collapse navbar-collapse" id = "navbarNavDolopdown">-->
-  <!--      <ul class = "navbar-nav ml-auto">-->
-  <!--         <%# if user_signed_in? %>-->
-  <!--        <li> -->
-  <!--          <%#= link_to ' マイページ', user_path(current_user.id), class: 'fas fa-home nav-link text-ligh text-white' %>-->
-  <!--        </li>-->
-  <!--        <li>-->
-  <!--          <%#= link_to ' 新規投稿', new_training_path, class: 'fas fa-home nav-link text-ligh text-white' %>-->
-  <!--        </li>-->
-  <!--        <li>-->
-  <!--           <%#= link_to ' おすすめ投稿', trainings_path, class: 'fas fa-home nav-link text-ligh text-white' %>-->
-  <!--        </li>-->
-  <!--        <li>-->
-  <!--           <%#= link_to ' おすすめユーザー', users_path, class: 'fas fa-home nav-link text-ligh text-white' %>-->
-  <!--        </li>-->
-  <!--        <li>-->
-  <!--           <%#= link_to ' DM', chats_path(current_user.id), class: 'fas fa-home nav-link text-ligh text-white' %>-->
-  <!--        </li>-->
-  <!--        <li>-->
-  <!--          <%#= link_to ' logout', destroy_user_session_path, method: :delete , class: 'fas fa-sign-out-alt nav-link text-light text-white'%>-->
-  <!--        </li>-->
-  <!--        <%# else %>-->
-  <!--        <li>-->
-  <!--          <%#= link_to ' Home', '/', class: 'nav-link text-light text-white' %>-->
-  <!--        </li> -->
-  <!--        <li>-->
-  <!--          <%#= link_to " About", "/homes/about", class: 'nav-link text-light text-white' %> -->
-  <!--        </li>-->
-  <!--        <li>-->
-  <!--          <%#= link_to " sign up", new_user_registration_path, class: 'nav-link text-light text-white' %>-->
-  <!--        </li>-->
-  <!--        <li>-->
-  <!--          <%#= link_to " login", new_user_session_path, class: ' nav-link text-light text-white' %>-->
-  <!--        </li>-->
-  <!--          <%# end %>-->
-  <!--      </ul>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--</nav>  -->
-  
-     <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class = "container">
-      <div class = "navbar-brand mx-auto">
-  <p class="title pt-1">workout</p>
-  <input type="checkbox" id="navTgl">
-	<label for="navTgl" class="open"><span></span></label>
-	<label for="navTgl" class="close"></label>
-	<nav class="menu">
-	  <h2>メニュー</h2>
-	  <ul>
-	    <% if user_signed_in? %>
-	    <li>
-	      <%= link_to ' マイページ', user_path(current_user.id), class: 'fas fa-user-circle nav-link text-ligh text-white' %>
-	    </li>
-	    <li>
-	      <%= link_to ' 新規投稿', new_training_path, class: 'fas fa-plus nav-link text-ligh text-white' %>
-	    </li>
-	    <li>
-	      <%= link_to ' おすすめ投稿', trainings_path, class: 'fas fa-crown nav-link text-ligh text-white' %>
-	    </li>
-	    <li>
-	      <%= link_to ' おすすめユーザー', users_path, class: 'fas fa-search-plus nav-link text-ligh text-white' %>
-	    </li>
-	    <li>
-	      <%= link_to ' タイムライン', timeline_training_path(current_user.id), class: 'fas fa-home nav-link text-ligh text-white' %>
-	    </li>
-	    <li>
-	       <%= link_to ' DM', chats_path(current_user.id), class: 'fas fa-envelope nav-link text-ligh text-white' %>
-	    </li>
-	    <li>
-	      <%= link_to ' logout', destroy_user_session_path, method: :delete , class: 'fas fa-sign-out-alt nav-link text-light text-white'%>
-	    </li>
-	    <% else %>
-	    <li>
-	      <%= link_to ' Home', '/', class: 'nav-link text-light text-white' %>
-	    </li>
-	    <li>
-	      <%= link_to " 筋トレのメリットって？", "/homes/about", class: 'nav-link text-light text-white' %>
-	    </li>
-	    <li>
-	      <%= link_to " 新規登録", new_user_registration_path, class: 'nav-link text-light text-white' %>
-	    </li>
-	    <li>
-	      <%= link_to " ログイン", new_user_session_path, class: ' nav-link text-light text-white' %>
-	    </li>
-	    <% end %>
-	   </ul>
-	  </nav>
-	  </div>
-	  </div>
-	  </nav>
-   </header>
-  <main>
-    <%= yield %>
-  </main>
-  <footer>
-  </footer>
+      <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class = "container">
+          <%= link_to ' 戻る', 'javascript:history.back()', class: "fas fa-fast-backward text-ligh text-white" %>
+        <div class = "navbar-brand mx-auto">
+          <p class="title pt-1">workout</p>
+          <input type="checkbox" id="navTgl">
+	        <label for="navTgl" class="open"><span></span></label>
+ 	        <label for="navTgl" class="close"></label>
+            <nav class="menu">
+              <h2>メニュー</h2>
+            	  <ul>
+            	    <% if user_signed_in? %>
+            	    <li>
+            	      <%= link_to ' マイページ', user_path(current_user.id), class: 'fas fa-user-circle nav-link text-ligh text-white' %>
+            	    </li>
+            	    <li>
+            	      <%= link_to ' 新規投稿', new_training_path, class: 'fas fa-plus nav-link text-ligh text-white' %>
+            	    </li>
+            	    <li>
+            	      <%= link_to ' 投稿ランキング', trainings_path, class: 'fas fa-crown nav-link text-ligh text-white' %>
+            	    </li>
+            	    <li>
+            	      <%= link_to ' ユーザー検索', users_path, class: 'fas fa-search-plus nav-link text-ligh text-white' %>
+            	    </li>
+            	    <li>
+            	      <%= link_to ' タイムライン', timeline_training_path(current_user.id), class: 'fas fa-home nav-link text-ligh text-white' %>
+            	    </li>
+            	    <li>
+            	       <%= link_to ' DM', chats_path(current_user.id), class: 'fas fa-envelope nav-link text-ligh text-white' %>
+            	    </li>
+            	    <li>
+            	      <%= link_to ' logout', destroy_user_session_path, method: :delete , class: 'fas fa-sign-out-alt nav-link text-light text-white'%>
+            	    </li>
+            	    <% else %>
+            	    <li>
+            	      <%= link_to ' トップページ', '/', class: 'nav-link text-light text-white' %>
+            	    </li>
+            	    <li>
+            	      <%= link_to " 筋トレのメリットって？", "/homes/about", class: 'nav-link text-light text-white' %>
+            	    </li>
+            	    <li>
+            	      <%= link_to " 新規登録", new_user_registration_path, class: 'nav-link text-light text-white' %>
+            	    </li>
+            	    <li>
+            	      <%= link_to " ログイン", new_user_session_path, class: ' nav-link text-light text-white' %>
+            	    </li>
+            	    <% end %>
+	               </ul>
+	           </nav>
+	        </div>
+	      </div>
+	    </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      　<div class = "container">
+        　<div class="row">
+            <div class="pt-1 mx-auto">© 2021 workout All Rights Reserved.</div>
+          </div>
+    </footer>
   </body>
 </html>

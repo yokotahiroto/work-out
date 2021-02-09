@@ -34,11 +34,12 @@ document.addEventListener("scroll", function() {
 //アニメーション
 
 //トップへ戻る
+
 $(function() {
-  $('#back a').on('click',function(event){
+  $('#top-btn a').on('click',function(event){
     $('body, html').animate({
       scrollTop:0
-    }, 800);
+    }, 1000);
     event.preventDefault();
   });
 });

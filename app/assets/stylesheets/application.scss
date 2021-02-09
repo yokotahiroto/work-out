@@ -17,15 +17,16 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-// main {
-//   background-color: #BBBBBB;
-// }
+
 
 @charset "UTF-8";
 
 //ドロワーメニュー記述
 body {
 	margin: 0;
+	background-image: url("black.jpg");
+  background-size: cover;
+  color: white;
 }
 .contents {
 	transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -151,26 +152,9 @@ body {
 
 .login-container {
 	background-image: url("/assets/run.jpg");
-	height: 850px;
+	height: 800px;
 	background-size: cover;
-	// z-index: -1;
 }
-
-// .login-container:before{
-//   content:'';
-//   background: inherit;
-//   -webkit-filter: blur(5px);
-//   -moz-filter: blur(5px);
-//   -o-filter: blur(5px);
-//   -ms-filter: blur(5px);
-//   filter: blur(5px);
-//   position: absolute;
-//   top: -5px;
-//   left: -5px;
-//   right: -5px;
-//   bottom: -5px;
-//   z-index: 0;
-// }
 
 .devise-field {
   height: 30px;
@@ -187,13 +171,46 @@ body {
 	text-align: center;
 }
 
-
-
-#back {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
+.top-btn {
+  position:   fixed;
+  right:      20px;
+  bottom:     30px;
 }
-#back img {
-  width: 50px;
+
+.top-btn a {
+  width:      50px;
+}
+
+.out-line {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    background: #FFF;
+    border: solid 3px #808080;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    color: black;
+}
+
+.notice {
+	color: #8EB8FF;
+}
+
+.red {
+	color: #FF0000;
+}
+
+.black {
+	color: black
+}
+
+.m-bottom {
+	margin-bottom: 100px;
+}
+
+.title-solid {
+	border-left: 4px solid #8EB8FF;
+}
+
+.white {
+	color: white
 }

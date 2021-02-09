@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-       redirect_to user_path(@user.id), notice: "You have updated user successfully."
+       redirect_to user_path(@user.id), notice: "プロフィールが変更されました"
     else
        render :edit
     end
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     render 'show_follower'
   end
   
-  def user_favorite
+  def user_favorites
     @user_favorite = User.find_by(id: params[:id])
     @favorites = Favorite.where(user_id: @user_favorite.id)
   end

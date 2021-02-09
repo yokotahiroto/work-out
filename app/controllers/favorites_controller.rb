@@ -3,6 +3,7 @@ class FavoritesController < ApplicationController
     @training = Training.find(params[:training_id])
     favorite = current_user.favorites.new(training_id: @training.id)
     favorite.save
+    
   end
   
   def destroy

@@ -1,12 +1,15 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="offset-1 col-auto mt-2 mb-2">
+    <div class="col-auto mt-2 mb-2">
       <% if @user.id == current_user.id %>
-      <h3 style="border-left: 4px solid #000;">マイページ</h3>
+      <h3 class="title-solid">マイページ</h3>
       <% else %>
-      <h3 style="border-left: 4px solid #000;">ユーザーページ</h3>
+      <h3 class="title-solid">ユーザーページ</h3>
       <% end %>
     </div>
+  </div>
+  <div class="row justify-content-center mb-2">
+    <div class = "notice"><%= notice %></div>
   </div>
    <!--ユーザー情報-->
   <div class="row justify-content-center">
@@ -14,7 +17,7 @@
       <div class="d-inline-block">
         <%= attachment_image_tag @user, :profile_image, size:'100x100', fallback: "no_photo.png", size:'150x150' %>
       </div>
-      <table class="table d-inline-block col-9">
+      <table class="table table-borderless d-inline-block col-9 white">
         <thead>
           <tr>
             <th class="px-5">フォロワー</th>
@@ -35,12 +38,13 @@
         </tbody>
       </table>
       <div class="row">
-      <div class="col-1"><%= @user.name %></div>
-      <div class="offset-5 coi-5"><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-secondary" %></div>
+        <div class="col-1"><%= @user.name %></div>
+          <div class="offset-5 coi-5"><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-secondary" %></div>
+        </div>
+          <div class="row mb-2">
+            <%= @user.introduction %> 
+          </div>
       </div>
-      <%= @user.introduction %>
-    </div>
-
   </div>
   <div class="row mt-2">
     <div class="col-10 mx-auto display-flex">
@@ -68,17 +72,16 @@
             <%= date.day %>
             <% trainings.each do |training| %>
             <%= link_to "詳細", training_path(training) %>
-           <div>
+            <div>
             <% training.muscle_part.each do |part| %>
             <%= part %>
             <% end %>
-           </div>
-           <% end %>
+            </div>
           <% end %>
-
-        </div>
+        <% end %>
+      </div>
         <div class="content">
-          <%= line_chart @data %>
+          <%= line_chart @data, colors: ["#fff", "#fff"] %>
         </div>
       </div>
     </div>

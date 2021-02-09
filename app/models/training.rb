@@ -3,6 +3,7 @@ class Training < ApplicationRecord
   has_many :training_muscles, dependent: :destroy
   has_many :muscles, :through => :training_muscles
   has_many :favorites, dependent: :destroy 
+  has_many :favorited_users, through: :favorites, source: :user
   has_many :training_comments, dependent: :destroy
   attachment :post_image
   validates :time, presence: true
