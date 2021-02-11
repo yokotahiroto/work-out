@@ -1,9 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-auto ml-1 mt-2">
-      <h3 class="title-solid">タイムライン</h3>
+      <h3 class="title-solid white">タイムライン</h3>
     </div>
   </div>
+  
   <div class="row justify-content-center mb-2">
     <div class = "notice"><%= notice %></div>
   </div>
@@ -21,56 +22,56 @@
       <div class="offset-1 col-5">
         <%= attachment_image_tag feed, :post_image, fallback: "no_photo.png", size:'400x300' %></br>
         <div class="flex mt-3">
-        <div id="favorite-btn-<%= feed.id %>" class="mx-auto">
-           <%= render 'favorites/favorite-btn', training: feed %>
-        </div>
-        <div class="far fa-comment fa-2x mx-auto">
-          <%= feed.training_comments.count %>
-        </div>
+          <div id="favorite-btn-<%= feed.id %>" class="mx-auto">
+             <%= render 'favorites/favorite-btn', training: feed %>
+          </div>
+          <div class="far fa-comment fa-2x mx-auto">
+            <%= feed.training_comments.count %>
+          </div>
         </div>
       </div>
       <div class="col-5">
         <div class="card-header">
-            <h5 style="font-weight :bold;">
-              <i class="fas fa-calendar-week">トレーニング日</i>
-            </h5>
-            <%= feed.start_time.strftime("%Y-%m-%d") %>
-            <hr>
+          <h5 style="font-weight :bold;">
+            <i class="fas fa-calendar-week">トレーニング日</i>
+          </h5>
+          <%= feed.start_time.strftime("%Y-%m-%d") %>
+          <hr>
             
-            <h5 style="font-weight :bold;">
-              <i class="fas fa-stopwatch">時間</i>
-            </h5>
-            <%= feed.time %>
-            <hr>
+          <h5 style="font-weight :bold;">
+            <i class="fas fa-stopwatch">時間</i>
+          </h5>
+          <%= feed.time %>
+          <hr>
             
-            <h5 style="font-weight :bold;">
-              <i class="fas fa-dumbbell">トレーニング部位</i>
-            </h5>
-            <% feed.muscle_part.each do |part| %>
-            <%= part %>
-            <% end %>
-            <hr>
+          <h5 style="font-weight :bold;">
+            <i class="fas fa-dumbbell">トレーニング部位</i>
+          </h5>
+          <% feed.muscle_part.each do |part| %>
+          <%= part %>
+          <% end %>
+          <hr>
             
-            <h5 style="font-weight :bold;">
-              <i class="fas fa-running">有酸素</i>
-            </h5>
-            <%= feed.run %>
-            <hr>
+          <h5 style="font-weight :bold;">
+            <i class="fas fa-running">有酸素</i>
+          </h5>
+          <%= feed.run %>
+          <hr>
             
-            <h5 style="font-weight :bold;">
-              <i class="fas fa-drumstick-bite">食事</i>
-            </h5>
-            <%= feed.meal %>
-            <hr>
-          </div>
+          <h5 style="font-weight :bold;">
+            <i class="fas fa-drumstick-bite">食事</i>
+          </h5>
+          <%= feed.meal %>
+          <hr>
+        </div>
       </div>
     </div>
     <% end %>
-    </div>
-    <% end %>
-    <span id="top-btn">
-      <a href="#">
-        <%= image_tag asset_path('arrow.png'), size: "80x80", class: 'top-btn' %>
-      </a>
-    </span>
+  </div>
+  <% end %>
+  <span id="top-btn">
+    <a href="">
+      <%= image_tag asset_path('white-arrow.png'), data: {"turbolinks"=>false}, class: 'top-arrow' %>
+    </a>
+  </span>
     

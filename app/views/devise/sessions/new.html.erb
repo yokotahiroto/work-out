@@ -2,6 +2,7 @@
   <div class="row mx-auto">
     <h1 class="mx-auto text-light title mt-2">Lets workout</h1>
   </div>
+  
   <div class="row pt-4 mx-auto">
     <div class="col-6 mx-auto">
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
@@ -21,7 +22,7 @@
       </div>
       
       <% if devise_mapping.rememberable? %>
-    　　<div class="field">
+    　　<div class="field white">
       　　<%= f.check_box :remember_me %>
       　　<%= f.label :remember_me %>
     　　</div>
@@ -36,6 +37,6 @@
     </div>
   </div>
   <div class="row offset-4 col-5">
-        <%= render "devise/shared/links", class: "flex-end" %>
-      </div>
+    <%= render "devise/shared/links", class: "flex-end" %>
+  </div>
 </div>

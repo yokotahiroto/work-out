@@ -1,6 +1,8 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//タブメニュー
 .tab-area {
   display: flex;
   justify-content: space-around;
@@ -33,6 +35,7 @@
   }
 }
 
+//カレンダー
 .simple-calendar {
  .day {}
  .wday-0 {}
@@ -50,12 +53,12 @@
  .next-month { }
  .current-month {}
  .has-events {
-   background: #98fb98;
+   background: #8EB8FF;
  }
 }
 
 
-
+//検索フォーム
 .searchTerm {
   width: 250px;
   border: 3px solid #8EB8FF;
@@ -67,11 +70,10 @@
 }
 
 .searchTerm:focus{
-  color: #8EB8FF;
+  color: #000;
 }
 
 .searchButton {
-  
   height: 36px;
   border: 1px solid #8EB8FF;
   background: #8EB8FF;
@@ -82,4 +84,6 @@
   font-size: 20px;
 }
 
-/*Resize the wrap to see the search bar change!*/
+.chart {
+  background: white;
+}

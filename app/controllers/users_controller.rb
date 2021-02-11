@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @training = @user.trainings
     @current_user = current_user
     @data = @training.pluck(:start_time, :weight)
-    @time_total = @training.all.sum(:time)
+    @time_total = @training.all.sum(:time)/60.to_f
   end
 
   def index
@@ -13,7 +13,6 @@ class UsersController < ApplicationController
         @users = User.all
       else
         @users = User.where('name LIKE(?)', "%#{params[:user][:keyword]}%")
-      # render json: @users
       end
     else
       @users = User.all
@@ -45,7 +44,7 @@ class UsersController < ApplicationController
     @user  = User.find(params[:id])
     render 'show_follower'
   end
-  
+
   def user_favorites
     @user_favorite = User.find_by(id: params[:id])
     @favorites = Favorite.where(user_id: @user_favorite.id)

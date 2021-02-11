@@ -1,5 +1,5 @@
 <% if request.referer.include?("/timeline") || request.referer.include?("/trainings/")%>
-$("#favorite-btn-<%= @training.id %>").html("<%= escape_javascript(render partial: 'favorites/favorite-btn', locals: {training: @training}) %>");
+  $("#favorite-btn-<%= @training.id %>").html("<%= escape_javascript(render partial: 'favorites/favorite-btn', locals: {training: @training}) %>");
 <% else %>
-$("#favorite-small-btn-<%= @training.id %>").html("<%= escape_javascript(render partial: 'favorites/favorite-small-btn', locals: {training: @training}) %>");
+  $("#favorite-small-btn-<%= @training.id %>").html("<%= escape_javascript(render partial: 'favorites/favorite-small-btn', locals: {training: @training}) %>");
 <% end %>

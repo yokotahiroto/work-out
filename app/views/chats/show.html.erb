@@ -1,34 +1,33 @@
 <div class="container-fluid" data-turbolinks="false">
   <div class="row">
     <div class="col-10 mx-auto mt-2">
-      <h2 style="text-align:center"><%="#{@partner.name}さんとのDM"%></h2>
-        <div id="chats">
-          <% @chats.each do |chat|%>
-            <% if chat.user_id == current_user.id %>
-              <div class="mycomment">
-                <p class="black"><%= chat.sentence %></p>
+      <h2 style="text-align:center" class="white"><%="#{@partner.name}さんとのDM"%></h2>
+      <div id="chats">
+        <% @chats.each do |chat|%>
+          <% if chat.user_id == current_user.id %>
+            <div class="mycomment">
+              <p><%= chat.sentence %></p>
+            </div>
+          <% else %>
+            <div class="fukidasi">
+              <div class="faceicon">
+                <%= attachment_image_tag chat.user, :profile_image, fallback: "no_photo.png", size:'100x100' %>
               </div>
-            <% else %>
-              <div class="fukidasi">
-                <div class="faceicon">
-                  <!--<img src="/assets/profile.png" alt="相手">-->
-                  <%= attachment_image_tag chat.user, :profile_image, fallback: "no_photo.png", size:'100x100' %>
-                </div>
-                <div class="chatting">
-                  <div class="says">
-                    <p class="black"><%= chat.sentence %></p>
-                  </div>
+              <div class="chatting">
+                <div class="says">
+                  <p><%= chat.sentence %></p>
                 </div>
               </div>
-            <% end %>
+            </div>
           <% end %>
-        </div>
-        <form id="send-form">
-          <input type="text" id="sentence" placeholder="入力してね" style="width:30%;">
-          <input type="submit" value="送信" id="chat-send">
-          <input id="current_user_id" type="hidden" value= "<%= current_user.id %>">
-          <input id="partner_id" type="hidden" value= "<%= @partner.id %>">
-        </form>
+        <% end %>
+      </div>
+      <form id="send-form">
+        <input type="text" id="sentence" placeholder="入力してね" style="width:30%;">
+        <input type="submit" value="送信" id="chat-send">
+        <input id="current_user_id" type="hidden" value= "<%= current_user.id %>">
+        <input id="partner_id" type="hidden" value= "<%= @partner.id %>">
+      </form>
     </div>
   </div>
 </div>

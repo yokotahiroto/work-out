@@ -2,8 +2,8 @@
   <div class="row">
     <div class="img-wrap">
       <div class="img">
-      <%= image_tag "trainingtop2.jpeg",size: "1600x800" %>
-      <p class="arrow"></p>
+        <%= image_tag "trainingtop2.jpeg",size: "1600x900" %>
+        <p class="arrow"></p>
       </div>
     </div>
   </div>
@@ -12,57 +12,59 @@
       <h1 class="animationTarget">Lets workout</h1>
     </theader> 
     <tmain>
-    <ul class="contents">
-      <li class="animationTarget">
-        <%= image_tag "run.jpeg" %>
-        <div class="contentstext">
-          <h2>workoutってどんなサイト？</h2>
-          <p>
-          日々のトレーニングを記録し可視化、投稿することでトレーニングの管理がしやすくなり
-          モチベーションを維持することができるサイトです
-          </p>
-        </div>
-      </li>
-
-      <li class="animationTarget">
-        <%= image_tag "trainings.jpeg" %>
-        <div class="contentstext">
-          <h2>-SNS機能-</h2>
-          <p>投稿、コメント、フォロー、DM、いいね、検索<br>
-             といった一般的なSNS機能を備えてます、普段他のSNSでは<br>
-             恥ずかしいトレーニング後の写真もトレーニングしてる仲間だからこそ<br>
-             投稿できます、みんなでトレーニングを楽しみシェアしていきましょう
-          </p>
-        </div>
-      </li>
-
-      <li class="animationTarget">
-        <%= image_tag "chart.jpeg" %>
-        <div class="contentstext">
-          <h2>グラフ表示機能</h2>
-          <p>投稿した日付と体重を元にグラフが作成され<br>
-             日々の体重の変化を目で見ることができます
-          </p>
-        </div>
-      </li>
-
-      <li class="animationTarget">
-        <%= image_tag "calendar.jpeg" %>
-        <div class="contentstext">
-          <h2>カレンダー機能</h2>
-          <p>投稿するとその日のメニューがカレンダーに表示されます<br>
-             自分がどんなメニューをしてきたかわかるので<br>
-             メニューの作成に役立ちます
-          </p>
-        </div>
-      </li>
-    </ul>
+      <ul class="contents">
+        <li class="animationTarget">
+          <%= image_tag "run.jpeg" %>
+          <div class="contentstext">
+            <h2>workoutってどんなサイト？</h2>
+            <p>
+            トレーニングを記録し可視化、投稿することでトレーニングの管理がしやすくなり
+            モチベーションを維持することができるサイトです、日々のトレーニングやダイエットに役立ててください
+            </p>
+          </div>
+        </li>
+  
+        <li class="animationTarget">
+          <%= image_tag "trainings.jpeg" %>
+          <div class="contentstext">
+            <h2>もう一人じゃない</h2>
+            <p>投稿、コメント、フォロー、DM、いいね、検索<br>
+               といった一般的なSNS機能を備えてます、普段他のSNSでは投稿するのが
+               恥ずかしいトレーニング後の写真もトレーニングしてる仲間だからこそ<br>
+               投稿できます、みんなでトレーニングを楽しみシェアしていきましょう
+            </p>
+          </div>
+        </li>
+  
+        <li class="animationTarget">
+          <%= image_tag "chart.jpeg" %>
+          <div class="contentstext">
+            <h2>グラフで体重を管理</h2>
+            <p>投稿した日付と体重を元にグラフが作成され<br>
+               日々の体重の変化を目で見ることができます<br>
+               グラフと体重は他のユーザーには見えないので<br>
+               体重を見られるのが恥ずかしくても安心です
+            </p>
+          </div>
+        </li>
+  
+        <li class="animationTarget">
+          <%= image_tag "calendar.jpeg" %>
+          <div class="contentstext">
+            <h2>カレンダーでメニューがすぐわかる</h2>
+            <p>投稿するとその日のメニューがカレンダーに表示され<br>
+               自分がどんなメニューをしてきたかわかります<br>
+               メニューの管理がしやすくなり詳細も見れるので<br>
+               計画的にトレーニングしやすいです
+            </p>
+          </div>
+        </li>
+      </ul>
     </tmain>
   </div>
   <div class="row top">
     <tfooter class="mx-auto m-bottom">
       <%= link_to "新規登録はこちら", new_user_registration_path, class: "btn btn-light text-dark-50" %>
-      <%= link_to "筋トレのメリットが知りたい", "/homes/about", class: "btn btn-light text-dark" %>
     </tfooter>
    <span id="top-btn">
       <a href="#">

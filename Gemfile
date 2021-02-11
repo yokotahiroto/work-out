@@ -70,6 +70,7 @@ gem 'font-awesome-sass', '~> 5.13'
 gem "byebug"
 gem 'rails-i18n', '~> 5.1'
 gem 'chartkick'
+gem 'groupdate'
 
 gem 'dotenv-rails'
 group :production do

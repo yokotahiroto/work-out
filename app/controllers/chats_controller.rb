@@ -14,10 +14,6 @@ class ChatsController < ApplicationController
         @chat_partners.push([user, chats])
       end
     end
-    #@last_message = []
-    #@chat_partners.each do |partner|
-    #@tr = @last_message.push(Chat.where(user_id: current_user.id).where(partner_id: partner.id).or(Chat.where(partner_id: current_user.id).where(user_id: partner.id)).order(updated_at: "DESC").limit(1)[0])
-    #end
   end
 
   def show

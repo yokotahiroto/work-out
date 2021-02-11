@@ -33,17 +33,8 @@ document.addEventListener("scroll", function() {
 });
 //アニメーション
 
-//トップへ戻る
 
-$(function() {
-  $('#top-btn a').on('click',function(event){
-    $('body, html').animate({
-      scrollTop:0
-    }, 1000);
-    event.preventDefault();
-  });
-});
-//トップへ戻る
+
 //タブメニュー
 document.addEventListener('turbolinks:load',function(){
   $(function() {
@@ -64,6 +55,13 @@ document.addEventListener('turbolinks:load',function(){
 });
 // 検索フォーム
 
-// document.getElementById("motto").addEventListener("click", function() {
-//   this.textContent = "閉じる";
-// });
+//トップへ戻る
+$(function() {
+  $('#top-btn a').on('click',function(event){
+    $('body, html').animate({
+      scrollTop:0
+    }, 800);
+    event.preventDefault();
+  });
+});
+//トップへ戻る
