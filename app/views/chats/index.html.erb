@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-auto ml-1 mt-2">
+      <h3 class="title-solid white">DM一覧</h3>
+    </div>
+  </div>
+  <div class="row col-10 mx-auto">
+    <table class="table table col-10 mx-auto" style="color: white;">
+      <tbody>
+        <tr>
+          <% @chat_partners.each do |chat_partner|%>
+            <td>
+              <%=link_to chat_path(chat_partner[0].id) do %>
+                <%= attachment_image_tag chat_partner[0], :profile_image, fallback: "no_photo.png", size: '100x100' %>
+              <% end %>
+            </td>
+            <td>
+              <%= chat_partner[0].name %>
+            </td>
+            <!--<td>-->
+              <%#= chat_partner[1].last.sentence %>
+            <!--</td>-->
+            <td id="index-<%= chat_partner %>">
+              <%= render 'chats/index', chat_partner: chat_partner %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

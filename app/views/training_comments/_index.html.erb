@@ -1,0 +1,57 @@
+<div class="fas fa-comment white">
+  <%= training_comments.count %>
+</div>
+  <h6 class="more white" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="motto">もっと見る....</h6>
+  <% training_comments.first(2).each do |comment| %>
+    <% unless comment.id.nil? %>
+      <div class="comment-container">
+        <div class="comment-box">
+          <div class="comment-avatar">
+            <%= attachment_image_tag comment.user, :profile_image, fallback: "no_photo.png", class: "comment-image", size: "40x40" %>
+          </div>
+          <div class="comment-text">
+            <p><%= link_to "@#{comment.user.name}", user_path(comment.user.id) %></p>
+              <div class="comment-entry white">
+                <%= comment.comment %>
+                <% if comment.user == current_user %>
+                  <%= link_to training_training_comment_path(comment.training_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+                      <i class="fas fa-trash" style="color: red;"></i>
+                  <% end %>
+                <% end %>
+              </div>
+              <span class="comment-date pull-right white">
+                  <%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
+              </span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<!--ここから3個目のコメントの記述 -->
+<div class="collapse" id="collapseExample">
+  <% training_comments.offset(2).each do |comment| %>
+    <% unless comment.id.nil? %>
+      <li class="comment-container">
+        <div class="comment-box">
+          <div class="comment-avatar">
+            <%= attachment_image_tag comment.user, :profile_image, fallback: "no_photo.png", class: "comment-image", size: "40x40" %>
+          </div>
+          <div class="comment-text">
+            <p><%= link_to "@#{comment.user.name}", user_path(comment.user.id) %></p>
+            <div class="comment-entry white">
+              <%= comment.comment %>
+                <% if comment.user == current_user %>
+                    <%= link_to training_training_comment_path(comment.training_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+                        <i class="fas fa-trash" style="color: red;"></i>
+                    <% end %>
+                <% end %>
+            </div>
+            <span class="comment-date pull-right white">
+                <%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
+            </span>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  <% end %>
+</div>

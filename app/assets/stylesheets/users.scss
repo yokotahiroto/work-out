@@ -1,3 +1,89 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//タブメニュー
+.tab-area {
+  display: flex;
+  justify-content: space-around;
+  background-color: #222e3e;
+  cursor: pointer;
+  .tab {
+    width: 50%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    border-right: 1px solid #50637b;
+    border-left: 1px solid #222e3e;
+  }
+  .tab.active {
+    background-color: #ccc;
+    color: #222e3e;
+    border: none;
+  }
+}
+.content-area {
+  font-size: 30px;
+  text-align: center;
+  .content {
+    display: none;
+  }
+  .content.show {
+    margin-top: 50px;
+    display: block;
+  }
+}
+
+//カレンダー
+.simple-calendar {
+ .day {}
+ .wday-0 {}
+ .wday-1 {}
+ .wday-2 {}
+ .wday-3 {}
+ .wday-4 {}
+ .wday-5 {}
+ .wday-6 {}
+ .today {}
+ .past {}
+ .future {}
+ .start-date {}
+ .prev-month {}
+ .next-month { }
+ .current-month {}
+ .has-events {
+   background: #8EB8FF;
+ }
+}
+
+
+//検索フォーム
+.searchTerm {
+  width: 250px;
+  border: 3px solid #8EB8FF;
+  padding: 5px;
+  height: 36px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #8EB8FF;
+}
+
+.searchTerm:focus{
+  color: #000;
+}
+
+.searchButton {
+  height: 36px;
+  border: 1px solid #8EB8FF;
+  background: #8EB8FF;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.chart {
+  background: white;
+}

@@ -1,61 +1,73 @@
-<div class=container-fluid>
+<div class="container-fluid">
   <div class="row">
     <div class="col-auto ml-1 mt-2">
-      <h3 style="border-left: 4px solid #000;">新規投稿</h3>
+      <h3 class="title-solid white">新規投稿</h3>
     </div>
   </div>
-  <div class="row">
-    <div class="col-8 mx-auto">
-       <%= form_with model:@training, local:true do |f| %>
-
-       <div class="form-group">
-        <%= f.label :post_image, "トレーニング写真", class: "fas fa-user-circle" %>
-        <%= f.attachment_field :post_image, class: "form-control-file" %>
-       </div>
-
-       <div class = "form-group">
-        <%= f.label :day, "日付", class: "fas fa-calendar-week" %>
-        <%= f.date_select :day, {}, class: "form-control" %>
-       </div>
-
-       <div class = "form-group">
+  
+  <div class="row justify-content-center">
+    <%= render 'users/error', user: @training %>
+  </div>
+  <div class="row mt-2">
+    <div class="col-8 mx-auto border out-line">
+      <%= form_with model:@training, local:true do |f| %>
+      <h5 style="font-weight :bold;">
+       <%= f.label :post_image, "トレーニング写真", class: "fas fa-user-circle" %>
+      </h5>
+       <%= f.attachment_field :post_image, class: "form-control-file" %>
+      <hr>
+      
+      <h5 style="font-weight :bold;">
+        <%= f.label :start_time, "トレーニング日", class: "fas fa-calendar-week" %>
+        <span class="red">(必須)</span>
+      </h5>
+        <%= f.date_select :start_time, {} %>
+      <hr>
+       
+      <h5 style="font-weight :bold;">
         <%= f.label :time, "トレーニング時間", class: "fas fa-stopwatch" %>
+        <span class="red">(必須)</span>
+      </h5>
         <%= f.number_field :time %> 分
-       </div>
-
-       <div class = "form-group">
+      <hr>
+      
+      <h5 style="font-weight :bold;">
         <%= f.label :muscle_ids, "トレーニング部位", class: "fas fa-dumbbell" %>
+      </h5>
         <%= f.collection_check_boxes(:muscle_ids, Muscle.all, :id, :part) do |b| %>
           <%= b.label { b.check_box + b.text } %>
         <% end %>
-       </div>
-
-      <div class="form-group">
-        <%= f.label :run, "有酸素", class: "fas fa-running" %>
-        <%= f.select :run, Training.runs.keys, {prompt: "選択してください"}, class: "run-select" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :meal, "食事法", class: "fas fa-drumstick-bite" %>
-        <%= f.select :meal, Training.meals.keys, {prompt: "選択してください"}, class: "meal-select" %>
-      </div>
-
-      <div class = "form-group">
+      <hr>
+      
+      <h5 style="font-weight :bold;">
+       <%= f.label :run, "有酸素", class: "fas fa-running" %>
+      </h5>
+       <%= f.select :run, Training.runs.keys, {prompt: "選択してください"}, class: "run-select" %>
+      <hr>
+      
+      <h5 style="font-weight :bold;">
+       <%= f.label :meal, "食事法", class: "fas fa-drumstick-bite" %>
+      </h5>
+       <%= f.select :meal, Training.meals.keys, {prompt: "選択してください"}, class: "meal-select" %>
+      <hr>
+      
+      <h5 style="font-weight :bold;">
         <%= f.label :weight, "体重", class: "fas fa-weight"%>
+        <span class="red">(必須)※他のユーザーには公開されません</span>
+      </h5>
         <%= f.number_field :weight %> kg
-      </div>
-
-      <div class="form-group">
+      <hr>
+      
+      <h5 style="font-weight :bold;">
         <%= f.label :memo, "メモ", class: "fas fa-clipboard" %>
+      </h5>
         <%= f.text_area :memo, class: "form-control" %>
+      <hr>
+      
+      <div class = "form-btn">
+        <%= f.submit "新規投稿", class: "btn btn-outline-dark float-right　align-center" %>
       </div>
-
-      <div class = "form-group center">
-        <button class = "btn btn-secondary">投稿する</button>
-      </div>
-
       <% end %>
     </div>
   </div>
 </div>
-

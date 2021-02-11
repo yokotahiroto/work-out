@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-auto mt-2 mb-3">
+      <h3 class="title-solid white">いいねした投稿</h3>
+    </div>
+  </div>
+  
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="text-center white">投稿ユーザー</th>
+          <th class="text-center white">メニュー</th>
+          <th class="text-center white">いいね数</th>
+          <th class="text-center white">コメント数</th>
+          <th class="text-cente white">詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% current_user.favorite_trainings.each do |training| %>
+        <tr>
+          <td>
+            <%= attachment_image_tag training, :post_image, fallback: "no_photo.png", size:'40x40' %>
+          </td>
+          <td class="text-center white">
+            <%= training.user.name %>
+          </td>
+          <td class="text-center white">
+            <% training.muscle_part.each do |part| %>
+            <%= part %>
+            <% end %>
+          </td>
+          <td class="text-center white">
+            <%= training.favorites.count %>
+          </td>
+          <td class="text-center white">
+            <%= training.training_comments.count %>
+          </td>
+          <td class="align-center white">
+            <%= link_to "詳細", training_path(training), class: "btn btn-light" %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

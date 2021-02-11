@@ -1,8 +1,15 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-auto ml-1 mt-2">
-      <h3 style="border-left: 4px solid #000;">マイページ</h3>
+    <div class="col-auto mt-2 mb-2">
+      <% if @user.id == current_user.id %>
+      <h3 class="title-solid white">マイページ</h3>
+      <% else %>
+      <h3 class="title-solid white">ユーザーページ</h3>
+      <% end %>
     </div>
+  </div>
+  <div class="row justify-content-center mb-2">
+    <div class = "notice"><%= notice %></div>
   </div>
    <!--ユーザー情報-->
   <div class="row justify-content-center">
@@ -10,7 +17,7 @@
       <div class="d-inline-block">
         <%= attachment_image_tag @user, :profile_image, size:'100x100', fallback: "no_photo.png", size:'150x150' %>
       </div>
-      <table class="table d-inline-block col-9">
+      <table class="table table-borderless d-inline-block col-9 white">
         <thead>
           <tr>
             <th class="px-5">フォロワー</th>
@@ -22,29 +29,85 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= link_to @user.followed.count, follower_user_path(@user) %></td>
-            <td><%= link_to @user.follower.count, following_user_path(@user) %></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td class="text-center"><%= link_to @user.followed.count, follower_user_path(@user), class: "editlink" %></td>
+            <td class="text-center"><%= link_to @user.follower.count, following_user_path(@user), class: "editlink" %></td>
+            <td class="text-center"><%= link_to @user.favorites.count, user_favorites_user_path(@user), class: "editlink" %></td>
+            <td class="text-center"><%= @training.count %></td>
+            <td class="text-center"><%= @time_total %></td>
           </tr>
         </tbody>
       </table>
       <div class="row">
-      <div class="col-1"><%= @user.name %></div>
-      <div class="offset-5 coi-5"><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-secondary" %></div>
+        <div class="col-1 white"><%= @user.name %></div>
+          <div class="offset-5 coi-5"><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-secondary" %></div>
+        </div>
+          <div class="row mb-2 white">
+            <%= @user.introduction %>
+          </div>
       </div>
-      <%= @user.introduction %>
-    </div>
-    
   </div>
-  <div class="row">
+  <div class="row mt-2">
+    <div class="col-10 mx-auto display-flex">
       <% unless current_user == @user %>
-        <% if current_user.following?(@user) %>
-            <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: 'btn btn-info btn-sm' %>
-        <% else %>
-            <%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: 'btn btn-success btn-sm' %>
-        <% end %>
+        <span id="follow-btn-<%= @user.id %>">
+          <%= render 'relationships/follow-btn', user: @user %>
+        </span>
+          <%= link_to "メッセージ", chat_path(@user),class: "btn btn-secondary w-4" %>
       <% end %>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-10 mx-auto mt-2">
+      <div class="tab-area">
+        <div class="tab active">
+          カレンダー
+        </div>
+        <div class="tab">
+          グラフ
+        </div>
+      </div>
+      <div class="content-area">
+        <div class="content show">
+          <%= month_calendar events: @user.trainings do |date, trainings| %>
+            <%= date.day %>
+            <% trainings.each do |training| %>
+            <%= link_to "詳細", training_path(training), class: "editlink" %>
+            <div>
+            <% training.muscle_part.each do |part| %>
+            <div class="black">
+            <%= part %>
+            </div>
+            <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+        <div class="content">
+          <% if @user.id == current_user.id %>
+          <div class="chart">
+            <%= line_chart @data, library: { backgroundColor: "#dc3545" } %>
+            <%#= line_chart @training.group_by_day(:start_time).maximum(:weight), library: { backgroundColor: "#dc3545" } %>
+          </div>
+          <% else %>
+           <div class="mb-5 mt-3">
+             <P>他のユーザーのグラフは閲覧できません</P>
+           </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <div class="d-flex align-content-start flex-wrap mt-4">
+        <% @training.each do |training| %>
+        <div class="mx-5 my-4">
+          <%=link_to training_path(training)do %>
+          <%= attachment_image_tag training, :post_image, size:'180x180', fallback: "no_photo.png", size:'180x180' %>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,22 +1,35 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-auto ml-1 mt-2">
-      <h3 style="border-left: 4px solid #000;">おすすめ投稿</h3>
+      <h3 class="title-solid white">ランキング</h3>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
+  
+  <div class="row mx-auto">
+    <div class="col-11 mx-auto">
       <div class="d-flex align-content-start flex-wrap mt-4">
-        <% @trainings.each do |training| %>
-        <div class="mx-2 my-4">
-          <%=link_to user_path(training.user.id)do %>
-          <%= attachment_image_tag training, :post_image, size:'180x180', fallback: "no_photo.png", size:'180x180' %>
+        <% @trainings.each.with_index(1) do |training, i| %>
+        <div class="mx-5 my-4 out-line">
+          <div class="mx-auto text-center">
+          第<%= i %>位
+          </div>
+          <%=link_to training_path(training)do %>
+            <%= attachment_image_tag training, :post_image, size:'180x180', fallback: "no_photo.png", size:'180x180' %>
           <% end %>
-          <div class="my-1 mx-auto">名前：<%= training.user.name %></div>
-          <%= link_to "投稿詳細", training_path(training) %>
+          <div class="my-1 mx-auto">
+            名前：<%= training.user.name %>
+          </div>
+          <%= link_to "ユーザーページ",user_path(training.user.id), class: "btn btn-outline-dark float-right" %>
+          <div id="favorite-small-btn-<%= training.id %>"> 
+            <%= render 'favorites/favorite-small-btn', training: training %>
+          </div>
+          <div class="far fa-comment mx-auto">
+            <%= training.training_comments.count %>
+        　</div>
         </div>
         <% end %>
       </div>
     </div>
   </div>
-</div>
+</div
+

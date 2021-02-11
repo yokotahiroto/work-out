@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_24_082343) do
+ActiveRecord::Schema.define(version: 2021_01_30_050151) do
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "partner_id", null: false
+    t.string "sentence", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chats_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "training_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["training_id"], name: "index_favorites_on_training_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
 
   create_table "muscles", force: :cascade do |t|
     t.string "part", null: false
@@ -25,6 +43,14 @@ ActiveRecord::Schema.define(version: 2021_01_24_082343) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "training_comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "training_id"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "training_muscles", force: :cascade do |t|
     t.integer "training_id"
     t.integer "muscle_id"
@@ -35,14 +61,14 @@ ActiveRecord::Schema.define(version: 2021_01_24_082343) do
   create_table "trainings", force: :cascade do |t|
     t.string "user_id"
     t.string "post_image_id"
-    t.date "day"
-    t.time "time"
+    t.integer "time"
     t.integer "meal", default: 0, null: false
     t.integer "run", default: 0, null: false
     t.text "memo"
     t.integer "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_time"
   end
 
   create_table "users", force: :cascade do |t|

@@ -9,10 +9,218 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
+ *= require simple_calendar
  *= require_tree .
  *= require_self
  */
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+@charset "UTF-8";
+
+body {
+	margin: 0;
+	background-image: url("black.jpg");
+  background-size: cover;
+}
+.contents {
+	transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+#navTgl:checked ~ .contents {
+	transform: translateX(250px);
+}
+
+// toggle button
+#navTgl {
+	display: none;
+}
+.open, .close {
+	cursor: pointer;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+.open {
+	z-index: 2;
+	width: 48px;
+	height: 48px;
+	background: #8EB8FF;
+	transition: background .6s, transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.open::before,
+.open::after {
+	content: "";
+}
+.open span,
+.open::before,
+.open::after {
+	content: "";
+	position: absolute;
+	top: calc(50% - 1px);
+	left: 30%;
+	width: 40%;
+	border-bottom: 2px solid white;
+	transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.open::before {
+	transform: translateY(-8px);
+}
+.open::after {
+	transform: translateY(8px);
+}
+.close {
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	transition: background .6s;
+}
+#navTgl:checked + .open {
+	background: indianRed;
+	transform: translateX(250px);
+}
+#navTgl:checked + .open span {
+	transform: scaleX(0);
+}
+#navTgl:checked + .open::before {
+	transform: rotate(45deg);
+}
+#navTgl:checked + .open::after {
+	transform: rotate(-45deg);
+}
+#navTgl:checked ~ .close {
+	pointer-events: auto;
+	background: rgba(0,0,0,.3);
+}
+
+// ドロワーメニュー
+.menu {
+	z-index: 1;
+	position: fixed;
+	overflow: auto;
+	top: 0;
+	left: 0;
+	width: 250px;
+	height: 100%;
+	margin: 0;
+	padding: 10px;
+	box-sizing: border-box;
+	background: rgba(0,0,0,.6);
+	transform: translateX(-100%);
+	transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.menu h2,
+.menu a {
+	color: white;
+}
+.menu h2 {
+	text-align: center;
+}
+.menu ul {
+	margin: 0;
+	padding: 0;
+}
+.menu li {
+	font-size: .8em;
+	line-height: 1.4;
+}
+.menu li:not(:first-child) {
+	border-top: 1px solid rgba(255,255,255,.6);
+}
+.menu a {
+	display: block;
+	padding: 1em 2em;
+	text-decoration: inherit;
+	transition: background .6s;
+}
+.menu a:hover {
+	background: black;
+}
+#navTgl:checked ~ .menu {
+	transform: none;
+}
+//ここまでドロワーメニュー記述
+
+.title {
+	font-family: 'Bangers', cursive;
+}
+
+.login-container {
+	background-image: url("/assets/run.jpg");
+	height: 800px;
+	background-size: cover;
+}
+
+.devise-field {
+  height: 30px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 2px;
+  color: #fff;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.form-btn {
+	text-align: center;
+}
+
+#top-btn {
+  position:   fixed;
+  right:      20px;
+  bottom:     30px;
+}
+
+.top-arrow{
+  width:      50px;
+  height:     50px;
+}
+// .top-btn a {
+//   width:      50px;
+// }
+
+.out-line {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  font-weight: bold;
+  background: #FFF;
+  border: solid 3px #808080;/*線*/
+  border-radius: 10px;/*角の丸み*/
+  color: black;
+}
+
+.notice {
+	color: #8EB8FF;
+}
+
+.red {
+	color: #FF0000;
+}
+
+.black {
+	color: black
+}
+
+.m-bottom {
+	margin-bottom: 100px;
+}
+
+.title-solid {
+	border-left: 4px solid #8EB8FF;
+}
+
+.white {
+	color: white
+}
+
+.editlink {
+  text-decoration: none;
+  color: #fff;
+}
+
+.favorite-color {
+	text-decoration: none;
+	color: #f00;
+}

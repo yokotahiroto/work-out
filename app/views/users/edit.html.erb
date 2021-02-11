@@ -1,9 +1,14 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-auto ml-1 mt-2">
-      <h3 style="border-left: 4px solid #000;">プロフィールを編集</h3>
+      <h3 class="title-solid white">プロフィールを編集</h3>
     </div>
   </div>
+  
+  <div class="row justify-content-center">
+    <%= render 'users/error', user: @user %>
+  </div>
+  <div class="row justify-content-center"><p>変更前の写真</p></div>
   <div class="row justify-content-center">
     <div><%= attachment_image_tag @user, :profile_image, size:'180x100', fallback: "no_photo.png", size:'180x180' %></div>
   </div>
@@ -17,7 +22,7 @@
       </div>
       
       <div class = "form-group">
-        <%= f.label :name, "名前" %>
+        <%= f.label :name, "ユーザーネーム" %>
         <%= f.text_field :name, class: 'form-control'%>
       </div>
       
@@ -26,8 +31,8 @@
         <%= f.text_area :introduction, class: "form-control introduction" %>
       </div>
       
-      <div class = "form-group">
-        <button class = "btn btn-secondary">完了</button>
+      <div class = "form-btn">
+         <%= f.submit "編集完了", class: "btn btn-outline-dark float-right　align-center" %>
       </div>
       <% end %>
     </div>

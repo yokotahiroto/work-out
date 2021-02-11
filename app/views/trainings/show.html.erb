@@ -1,24 +1,96 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-auto ml-1 mt-2">
-      <h3 style="border-left: 4px solid #000;">投稿詳細</h3>
+      <h3 class="title-solid white">投稿詳細</h3>
     </div>
-  <div class="row">
-    <div class="col-7 h-100 w-100">
-      <%= attachment_image_tag @training, :post_image, fallback: "no_photo.png" %>
-    </div>
-    <div class="col-5">
-      <div class="border">
-        <div class="border-bottom: 1px solid #000;">
-          <h4><%= @training.user.name %></h4>
+  </div>
+  
+  <div class="row justify-content-center mb-2">
+    <div class = "notice"><%= notice %></div>
+  </div>
+  <div class="row mx-auto">
+    <div class="offset-1 col-5 mt-4">
+      <%= attachment_image_tag @training, :post_image, fallback: "no_photo.png", size:'500x400' %>
+      <div id="favorite-btn-<%= @training.id %>" class="mt-2">
+          <%= render 'favorites/favorite-btn', training: @training %>
+      </div>
+　　　<!--ここからコメント-->
+      <ul>
+        <li class="comment-create">
+            <h3 class="text-left title white">コメント</h3>
+        </li>
+        <li id="comments_area">
+            <%= render partial: 'training_comments/index', locals: { training_comments: @training_comments } %>
+        </li>
+    　</ul>
+      <hr>
+      <% if user_signed_in? %>
+        <div class="comment-create">
+            <h3 class="text-left white">コメントを投稿する</h3>
+            <%= render partial: 'training_comments/form', locals: { training_comment: @training_comment, training: @training } %>
         </div>
-        <div><%= @training.day %></div>
-        <div><%= @training.time %></div>
-        <div><%= @training.muscle_ids %></div>
-        <div><%= @training.run %></div>
-        <div><%= @training.meal %></div>
-        <div><%= @training.weight %></div>
-        <div><%= @training.memo %></div>
+      <% end %>
+      <!--ここまでコメント-->
+    </div>
+    <!--トレーニングの詳細-->
+    <div class="col-5 mt-4">
+      <div class="card">
+        <div class="card-header border-bottom 1px solid :rgba(0,0,0,0.03)">
+          <h4 class="text-center"><%= @training.user.name %></h4>
+        </div>
+        <div class="card-body">
+          <% if @user.id == current_user.id %>
+          <div class="text-right">
+            <%= link_to "編集", edit_training_path(@training), class: "btn btn-success" %>
+            <%= link_to "削除", training_path(@training), method: :delete, "data-confirm" => "本当に消しますか", class: 'btn btn-danger'%>
+          </div>
+          <% end %>
+          
+          <h5 style="font-weight :bold;">
+            <i class="fas fa-calendar-week">日付</i>
+          </h5>
+          <%= @training.start_time.strftime("%Y-%m-%d") %>
+          <hr>
+            
+          <h5 style="font-weight :bold;">
+            <i class="fas fa-stopwatch">時間</i>
+          </h5>
+          <%= @training.time %>
+          <hr>
+            
+          <h5 style="font-weight :bold;">
+            <i class="fas fa-dumbbell">トレーニング部位</i>
+          </h5>
+          <% @training.muscle_part.each do |part| %>
+          <%= part %>
+          <% end %>
+          <hr>
+            
+          <h5 style="font-weight :bold;">
+            <i class="fas fa-running">有酸素</i>
+          </h5>
+          <%= @training.run %>
+          <hr>
+            
+          <h5 style="font-weight :bold;">
+            <i class="fas fa-drumstick-bite">食事</i>
+          </h5>
+          <%= @training.meal %>
+          <hr>
+          
+          <% if @user.id == current_user.id %>
+          <h5 style="font-weight :bold;">
+            <i class="fas fa-weight">体重</i>
+          </h5>
+          <%= @training.weight %>
+          <hr>
+          <% end %>
+            
+          <h5 style="font-weight :bold;">
+            <i class="fas fa-clipboard">メモ</i>
+          </h5>
+          <%= @training.memo %>
+        </div>
       </div>
     </div>
   </div>
