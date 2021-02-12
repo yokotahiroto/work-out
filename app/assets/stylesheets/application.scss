@@ -167,16 +167,26 @@ body {
 	text-align: center;
 }
 
-#top-btn {
-  position:   fixed;
-  right:      20px;
-  bottom:     30px;
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+.arrow{
+  width: 50px;
+  height: 50px;
 }
 
-.top-arrow{
-  width:      50px;
-  height:     50px;
-}
+// #top-btn {
+//   position:   fixed;
+//   right:      20px;
+//   bottom:     30px;
+// }
+
+// .top-arrow{
+//   width:      50px;
+//   height:     50px;
+// }
 // .top-btn a {
 //   width:      50px;
 // }

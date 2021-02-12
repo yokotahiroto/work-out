@@ -6,7 +6,7 @@
     <%= csp_meta_tag %>
     <meta charset="UTF-8 /">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
     <link href="https://fonts.googleapis.com/css?family=Bangers rel="stylesheet"">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -15,7 +15,7 @@
     <header>
       <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
         <div class = "container">
-          <%= link_to ' 戻る', 'javascript:history.back()', class: "fas fa-fast-backward text-ligh text-white" %>
+          <%= link_to "戻る", "javascript:history.back()", class: "fas fa-fast-backward text-ligh text-white" %>
           <div class = "navbar-brand mx-auto">
             <p class="title pt-1">workout</p>
             <input type="checkbox" id="navTgl">
@@ -26,35 +26,38 @@
               <ul>
               	<% if user_signed_in? %>
               	<li>
-              	  <%= link_to ' マイページ', user_path(current_user.id), class: 'fas fa-user-circle nav-link text-ligh text-white' %>
+              	  <%= link_to "マイページ", user_path(current_user.id), class: "fas fa-user-circle nav-link text-ligh text-white" %>
               	</li>
               	<li>
-              	  <%= link_to ' 新規投稿', new_training_path, class: 'fas fa-plus nav-link text-ligh text-white' %>
+              	  <%= link_to "新規投稿", new_training_path, class: "fas fa-plus nav-link text-ligh text-white" %>
               	</li>
               	<li>
-              	  <%= link_to ' 投稿ランキング', trainings_path, class: 'fas fa-crown nav-link text-ligh text-white' %>
+              	  <%= link_to "投稿ランキング", trainings_path, class: "fas fa-crown nav-link text-ligh text-white" %>
               	</li>
               	<li>
-              	  <%= link_to ' ユーザー一覧', users_path, class: 'fas fa-search-plus nav-link text-ligh text-white' %>
+              	  <%= link_to "ユーザー一覧", users_path, class: "fas fa-search-plus nav-link text-ligh text-white" %>
               	</li>
               	<li>
-              	  <%= link_to ' タイムライン', timeline_training_path(current_user.id), class: 'fas fa-home nav-link text-ligh text-white' %>
+              	  <%= link_to "タイムライン", timeline_training_path(current_user.id), class: "fas fa-home nav-link text-ligh text-white" %>
               	</li>
               	<li>
-              	  <%= link_to ' DM', chats_path(current_user.id), class: 'fas fa-envelope nav-link text-ligh text-white' %>
+              	  <%= link_to "DM", chats_path(current_user.id), class: "fas fa-envelope nav-link text-ligh text-white" %>
               	</li>
               	<li>
-              	  <%= link_to ' logout', destroy_user_session_path, method: :delete , class: 'fas fa-sign-out-alt nav-link text-light text-white'%>
+              	  <%= link_to "logout", destroy_user_session_path, method: :delete , class: "fas fa-sign-out-alt nav-link text-light text-white"%>
               	</li>
               	 <% else %>
               	<li>
-              	  <%= link_to ' トップページ', '/', class: 'nav-link text-light text-white' %>
+              	  <%= link_to "トップページ", "/", class: "nav-link text-light text-white" %>
               	</li>
               	<li>
-              	  <%= link_to " 新規登録", new_user_registration_path, class: 'nav-link text-light text-white' %>
+              	  <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-light text-white" %>
               	</li>
               	<li>
-              	  <%= link_to " ログイン", new_user_session_path, class: ' nav-link text-light text-white' %>
+              	  <%= link_to "ログイン", new_user_session_path, class: "nav-link text-light text-white" %>
+              	</li>
+              	<li>
+              	  <%= link_to "ゲストログイン（採用担当者様用）", users_guest_sign_in_path, method: :post, class: "nav-link text-light text-white"%>
               	</li>
               	<% end %>
   	          </ul>
