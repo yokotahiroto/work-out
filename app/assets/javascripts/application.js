@@ -33,7 +33,16 @@ document.addEventListener("scroll", function() {
 });
 //アニメーション
 
-
+//トップへ戻る
+$(function() {
+  $('#top-btn a').on('click',function(event){
+    $('body, html').animate({
+      scrollTop:0
+    }, 800);
+    event.preventDefault();
+  });
+});
+//トップへ戻る
 
 //タブメニュー
 document.addEventListener('turbolinks:load',function(){
@@ -55,13 +64,3 @@ document.addEventListener('turbolinks:load',function(){
 });
 // 検索フォーム
 
-//トップへ戻る
-$(function() {
-  $('#top-btn a').on('click',function(event){
-    $('body, html').animate({
-      scrollTop:0
-    }, 800);
-    event.preventDefault();
-  });
-});
-//トップへ戻る

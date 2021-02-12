@@ -20,7 +20,7 @@
     <%= link_to training_path(feed) do %>
     <div class="row mx-auto">
       <div class="offset-1 col-5">
-        <%= attachment_image_tag feed, :post_image, fallback: "no_photo.png", size:'400x300' %></br>
+        <%= attachment_image_tag feed, :post_image, fallback: "no_photo.png", size: "400x300" %></br>
         <div class="flex mt-3">
           <div id="favorite-btn-<%= feed.id %>" class="mx-auto">
              <%= render 'favorites/favorite-btn', training: feed %>
@@ -71,7 +71,6 @@
   <% end %>
   <span id="top-btn">
     <a href="">
-      <%= image_tag asset_path('white-arrow.png'), data: {"turbolinks"=>false}, class: 'top-arrow' %>
+      <#= image_tag asset_path('white-arrow.png'), data: {"turbolinks"=>false}, class: 'top-arrow' %>
     </a>
   </span>
-    
