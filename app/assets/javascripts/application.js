@@ -34,12 +34,14 @@ document.addEventListener("scroll", function() {
 //アニメーション
 
 //トップへ戻る
-$(function() {
-  $('#top-btn a').on('click',function(event){
-    $('body, html').animate({
-      scrollTop:0
-    }, 800);
-    event.preventDefault();
+document.addEventListener("turbolinks:load", function () {
+  $(function() {
+    $('#top-btn a').on('click',function(event){
+      $('body, html').animate({
+        scrollTop:0
+      }, 800);
+      event.preventDefault();
+    });
   });
 });
 //トップへ戻る
