@@ -33,8 +33,8 @@
             <td class="text-center"><%= link_to @user.follower.count, following_user_path(@user), class: "editlink" %></td>
             <td class="text-center"><%= link_to @user.favorites.count, user_favorites_user_path(@user), class: "editlink" %></td>
             <td class="text-center"><%= @training.count %></td>
-            <td class="text-center"><%= @time_total %></td>
-          </tr>
+            <td class="text-center"><%= @time_total.round(1) %></td>
+          </tr> 
         </tbody>
       </table>
       <div class="row">
