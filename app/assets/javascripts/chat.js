@@ -28,7 +28,6 @@ App.chat = App.cable.subscriptions.create("ChatChannel", {
 
 document.addEventListener('turbolinks:load',function(){
   $("#chat-send").on("click",function(e){
-    alert("メッセージ");
     sentence=$("#sentence").val();
     App.chat.speak(sentence);
     $("#sentence").val(""); //フォームを空に
