@@ -10,13 +10,14 @@
   </div>
   <div class="row mb-3">
     <div class="col-8 mx-auto">
+      <p class="text-white">変更前の写真</p>
       <div class="rounded mx-auto d-block">
         <%= attachment_image_tag @training, :post_image, size:'400x300', fallback: "no_photo.png", size:'180x180' %>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-8 mx-auto border">
+    <div class="col-8 mx-auto border out-line">
       <%= form_with model:@training, local:true do |f| %>
       
       <h5 style="font-weight :bold;">
