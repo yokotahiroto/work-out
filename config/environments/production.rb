@@ -91,5 +91,5 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.action_cable.allowed_request_origins = [ 'http://workout-hy.work', /http:\/\/workout-hy.*/ ]
+  config.action_cable.allowed_request_origins = [ 'https://workout-hy.work', /https:\/\/workout-hy.*/ ]
 end
