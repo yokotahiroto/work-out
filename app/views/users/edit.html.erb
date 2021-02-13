@@ -8,7 +8,7 @@
   <div class="row justify-content-center">
     <%= render 'users/error', user: @user %>
   </div>
-  <div class="row justify-content-center"><p>変更前の写真</p></div>
+  <div class="row justify-content-center"><p class="white">変更前の写真</p></div>
   <div class="row justify-content-center">
     <div><%= attachment_image_tag @user, :profile_image, size:'180x100', fallback: "no_photo.png", size:'180x180' %></div>
   </div>
@@ -17,17 +17,17 @@
       <%= form_with model:@user, local:true do |f| %>
 
       <div class="form-group">
-        <%= f.label :profile_image, "プロフィール写真" %>
-        <%= f.attachment_field :profile_image, class: "form-control-file" %>
+        <%= f.label :profile_image, "プロフィール写真" , class: "white"  %>
+        <%= f.attachment_field :profile_image, class: "form-control-file white" %>
       </div>
       
       <div class = "form-group">
-        <%= f.label :name, "ユーザーネーム" %>
+        <%= f.label :name, "ユーザーネーム" , class: "white" %>
         <%= f.text_field :name, class: 'form-control'%>
       </div>
       
       <div class="form-group">
-        <%= f.label :introduction, "自己紹介" %>
+        <%= f.label :introduction, "自己紹介" , class: "white"  %>
         <%= f.text_area :introduction, class: "form-control introduction" %>
       </div>
       
