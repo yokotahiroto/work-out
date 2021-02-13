@@ -1,24 +1,45 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+workout
 
-Things you may want to cover:
+## サイト概要
+トレーニング後などに内容を記録し
+メニューや体重に変化がひと目でわかり
+sns機能で他の人のメニューを見ることができ
+いいね、コメント、チャットなどで関わることができ
+トレーニング仲間を作ることもできる
 
-* Ruby version
+### サイトテーマ
+トレーニングやダイエットしてる人向けの
+記録と管理のできるsns
 
-* System dependencies
+### テーマを選んだ理由
+筋トレやダイエットを始めても続かない人が多く原因であるモチベーションの低下を防ぐために
+写真をsnsにアップしてコメントをもらったり筋トレ仲間の様子を知れるのがいいと思う反面
+snsにアップするのが恥ずかしいからできないと言うのが現状です、なので専用のsnsを作ることで
+載せるのがあたり前という環境を作ろうと思いました
+また記録管理できるようにし可視化することで今日はなんのメニューっやろうと迷わなくなり、
+より計画的にトレーニングできるようにしました
 
-* Configuration
+### ターゲットユーザ
+トレーニング、ダイエットをしている人や始めたい人
 
-* Database creation
+### 主な利用シーン
+トレーニング後
 
-* Database initialization
+## 設計書
+https://docs.google.com/spreadsheets/d/1OsyScaeOY-7YnhYYX3-6vLyS1Wl2Co0d/edit#gid=549108681
 
-* How to run the test suite
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1T33hRiTN2I0wljFkhHSFMR85bipjQaS38y_CS4Hpw_c/edit#gid=0
 
-* Services (job queues, cache servers, search engines, etc.)
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Deployment instructions
-
-* ...
+## 使用素材
+O-DAN
+https://o-dan.net/ja/
