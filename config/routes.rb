@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   end
   
   resources :chats, only: [:show, :index]
+  mount ActionCable.server => '/cable'
 end
