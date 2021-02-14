@@ -6,7 +6,7 @@ class TrainingsController < ApplicationController
 
   def index
     @all_ranks = Training.find(Favorite.group(:training_id).order('count(training_id) desc').limit(5).pluck(:training_id))
-    @trainings = Training.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    @trainings = Training.includes(:favorited_users).limit(10).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
   end
   
   def timeline
