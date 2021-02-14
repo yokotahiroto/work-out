@@ -8,7 +8,6 @@ class Training < ApplicationRecord
   attachment :post_image
   validates :time, presence: true
   validates :weight, presence: true
-  validates :memo, presence: true, length: { maximum: 100 }
   
   def muscle_part
     muscles.map {|muscle| muscle.part }
