@@ -29,7 +29,7 @@ snsにアップするのが恥ずかしいからできないと言うのが現�
 
 ## 設計書
 https://docs.google.com/spreadsheets/d/1OsyScaeOY-7YnhYYX3-6vLyS1Wl2Co0d/edit#gid=549108681
-
+https://docs.google.com/spreadsheets/d/1nNzlLBmULS2Qm9CH6Sxz0qElbdVohWMw/edit#gid=1243549839
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1T33hRiTN2I0wljFkhHSFMR85bipjQaS38y_CS4Hpw_c/edit#gid=0
 
