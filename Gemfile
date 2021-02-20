@@ -75,6 +75,7 @@ gem "byebug"
 gem 'rails-i18n', '~> 5.1'
 gem 'chartkick'
 gem 'groupdate'
+gem 'dotenv-rails'
 
 gem 'dotenv-rails'
 group :production do

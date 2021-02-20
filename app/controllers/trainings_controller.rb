@@ -5,7 +5,6 @@ class TrainingsController < ApplicationController
   end
 
   def index
-    @all_ranks = Training.find(Favorite.group(:training_id).order('count(training_id) desc').limit(5).pluck(:training_id))
     @trainings = Training.includes(:favorited_users).limit(10).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
   end
   
@@ -31,12 +30,19 @@ class TrainingsController < ApplicationController
   end
 
   def create
-    @training = Training.new(training_params)
-    @training.user_id = current_user.id
-    if @training.save
+    training = Training.new(training_params)
+    training.user_id = current_user.id
+    #ファイルが存在した時
+    if training.save && params[:training][:post_image].is_a?(ActionDispatch::Http::UploadedFile)
+      tags = Vision.get_image_data(training.post_image)
+        tags.each do |tag|
+          training.tags.create(name: tag)
+        end
+      redirect_to timeline_training_path(current_user.id),notice: "トレーニングを投稿しました"
+    # ファイルが存在しなかった時
+    elsif training.save && params[:training][:post_image].is_a?(String)
       redirect_to timeline_training_path(current_user.id),notice: "トレーニングを投稿しました"
     else
-      # redirect_back(fallback_location: new_training_path)
       render :new
     end
   end
@@ -56,7 +62,7 @@ class TrainingsController < ApplicationController
     @training = Training.find(params[:id])
     @training.destroy
     flash[:notice] = "トレーニングを削除しました"
-    redirect_to trainings_path
+    redirect_to user_path(current_user)
   end
 
   private
