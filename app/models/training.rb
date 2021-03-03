@@ -5,7 +5,7 @@ class Training < ApplicationRecord
   has_many :favorites, dependent: :destroy 
   has_many :favorited_users, through: :favorites, source: :user
   has_many :training_comments, dependent: :destroy
-   has_many :tags, dependent: :destroy
+  has_many :tags, dependent: :destroy
   attachment :post_image
   validates :time, presence: true
   validates :weight, presence: true
