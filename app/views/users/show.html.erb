@@ -86,7 +86,6 @@
           <% if @user.id == current_user.id %>
           <div class="chart">
             <%= line_chart @data, library: { backgroundColor: "#dc3545" } %>
-            <%#= line_chart @training.group_by_day(:start_time).maximum(:weight), library: { backgroundColor: "#dc3545" } %>
           </div>
           <% else %>
            <div class="mb-5 mt-3 white">

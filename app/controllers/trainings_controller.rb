@@ -30,17 +30,17 @@ class TrainingsController < ApplicationController
   end
 
   def create
-    training = Training.new(training_params)
-    training.user_id = current_user.id
+    @training = Training.new(training_params)
+    @training.user_id = current_user.id
     #ファイルが存在した時
-    if training.save && params[:training][:post_image].is_a?(ActionDispatch::Http::UploadedFile)
-      tags = Vision.get_image_data(training.post_image)
+    if @training.save && params[:training][:post_image].is_a?(ActionDispatch::Http::UploadedFile)
+      tags = Vision.get_image_data(@training.post_image)
         tags.each do |tag|
-          training.tags.create(name: tag)
+          @training.tags.create(name: tag)
         end
       redirect_to timeline_training_path(current_user.id),notice: "トレーニングを投稿しました"
     # ファイルが存在しなかった時
-    elsif training.save && params[:training][:post_image].is_a?(String)
+    elsif @training.save && params[:training][:post_image].is_a?(String)
       redirect_to timeline_training_path(current_user.id),notice: "トレーニングを投稿しました"
     else
       render :new
