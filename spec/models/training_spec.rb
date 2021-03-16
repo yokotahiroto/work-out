@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Bookモデルのテスト', type: :model do
+RSpec.describe 'Trainingモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
     context 'timeカラム' do
       it '空欄でないこと' do
