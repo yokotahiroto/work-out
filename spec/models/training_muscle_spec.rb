@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'TrainingCommentモデルのテスト', type: :model do
+RSpec.describe 'TrainingMuscleモデルのテスト', type: :model do
    describe 'アソシエーションのテスト' do
     context 'Muscleモデルとの関係' do
       it 'N:1となっている' do
