@@ -10,7 +10,7 @@ RSpec.describe 'Muscleモデルのテスト', type: :model do
       
       context 'Trainingモデルとの関係' do
         it '1:Nとなっている' do
-          expect(Training.reflect_on_association(:training).macro).to eq :has_many
+          expect(Training.reflect_on_association(:trainings).macro).to eq :has_many
         end
       end
   end
